@@ -1,0 +1,36 @@
+{
+  "header.dark-theme": "تیره",
+  "header.light-theme": "روشن",
+
+  "sidebar.dashboard": "داشبورد",
+  "sidebar.monitor": "مانیتور",
+  "sidebar.system": "سیستم",
+  "sidebar.system1": "سیستم ۱",
+  "sidebar.system2": "سیستم ۲",
+  "sidebar.system3": "سیستم ۳",
+  "sidebar.test1": "تست ۱",
+  "sidebar.test2": "تست ۲",
+
+  "sidebar.test3": "تست ۳",
+  "sidebar.test4": "تست ۴",
+  "sidebar.test5": "تست ۵",
+  "sidebar.test6": "تست ۶",
+  "sidebar.test7": "تست ۷",
+  "sidebar.test8": "تست ۸",
+
+  "sidebar.test9": "تست ۹",
+  "sidebar.test10": "تست ۱۰",
+  "sidebar.test11": "تست ۱۱",
+  "sidebar.test12": "تست ۱۲",
+
+  "loading.text": "لطفا صبر کنید. در حال لود...",
+
+  "home.name": "این صفحه خانه است",
+
+  "login.header": "هدر لاگین",
+  "login.footer": "فوتر لاگین",
+  "login.content": "محتوای لاگین",
+
+  "app.cart.items": "{count, plural, =0 {You have no items} one {You have one item} other {You have # items}} in your cart",
+  "app.item.price": "{price, number, ::currency/USD}"
+}

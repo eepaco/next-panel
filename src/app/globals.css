@@ -1,0 +1,78 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* --sideabr-offset: -256px; */
+
+  --primary-color: 73, 146, 88;
+  --secondary-color: 20 20 20;
+
+  --navbar-background-color: rgb(var(--primary-color));
+  --navbar-text-color: "";
+
+  --navbar-item-background-hover: rgb(var(--primary-color) / 0.7);
+  --navbar-dropdown-menu-background-color: 255 255 255;
+  --navbar-dropdown-menu-border: "";
+
+  --number-background-color: 226 135 34;
+
+  --sidebar-background: 50 50 50;
+  --sidebar-header-background: 50 50 50;
+  --sidebar-header-background-hover: 90 90 90;
+  --sidebar-text-color: "";
+  --sidebar-text-active-color: "";
+  --sidebar-icon-color: "";
+  --sidebar-icon-active-color: "";
+  --sidebar-subitem-text-color: "";
+  --sidebar-subitem-text-hover-color: "";
+  --sidebar-subitem-icon-color: "";
+  --sidebar-subitem-icon-hover-color: "";
+
+  --body-background-color: "";
+
+  --alert-warning-background-color: 255 243 205;
+  --alert-warning-text-color: 133 100 4;
+  --alert-danger-background-color: 212 53 39;
+  --alert-danger-text-color: 255 255 255;
+  --alert-success-background-color: var(--primary-color);
+  --alert-success-text-color: 255 255 255;
+  --alert-info-background-color: rgb(24, 96, 147);
+  --alert-info-text-color: 255 255 255;
+
+  --button-background-color: "";
+  --button-border-color: "";
+  --button-text-color: "";
+  --button-background-color-hover: "";
+  --button-border-color-hover: "";
+  --button-text-color-hover: "";
+  --button-active-background-color: "";
+  --button-active-border-color: "";
+  --button-active-text-color: "";
+  --button-active-background-color-hover: "";
+  --button-active-border-color-hover: "";
+  --button-active-text-color-hover: "";
+  --button-disabled-background-color: "";
+  --button-disabled-border-color: "";
+  --button-disabled-text-color: "";
+  --button-disabled-background-color-hover: "";
+  --button-disabled-border-color-hover: "";
+  --button-disabled-text-color-hover: "";
+
+  --input-background-color: "";
+  --input-border-color: "";
+  --input-text-color: "";
+  --input-placeholder-color: "";
+  --input-background-color-focus: "";
+  --input-border-color-focus: "";
+}
+
+body {
+  background-color: var(--navbar-item-background-hover);
+}
+
+/* @media screen and (max-width: 768px) {
+  :root {
+    --sideabr-offset: 0;
+  }
+} */
