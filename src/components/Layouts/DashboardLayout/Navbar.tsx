@@ -46,7 +46,7 @@ const Navbar = ({
           } `}
         ref={headerRef}
       >
-        <div className="flex space-x-2">
+        <div id="navbar-start-container" className="flex space-x-2">
           <NavigationMenu.Item
             className="hover:bg-[var(--navbar-item-background-hover)] focus:shadow-black flex items-center select-none px-2 focus:shadow-[0_0_0_2px] cursor-pointer"
             onClick={() => toggleClick()}
@@ -62,7 +62,7 @@ const Navbar = ({
           </NavigationMenu.Item>
         </div>
 
-        <div className="flex space-x-2">
+        <div id="navbar-end-container" className="flex space-x-2">
           <NavigationMenu.Item
             className="hover:bg-[var(--navbar-item-background-hover)] hover:bg-red-500 focus:shadow-black flex items-center select-none px-2 focus:shadow-[0_0_0_2px] cursor-pointer"
             onClick={() => alert("open console")}
