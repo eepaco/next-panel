@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { memo, useRef } from "react";
 import * as NavigationMenu from "@radix-ui/react-navigation-menu";
 import Icon from "@mdi/react";
 import {
@@ -38,12 +38,12 @@ const Navbar = ({
     >
       <NavigationMenu.List
         className={`bg-[var(--navbar-background-color)] text-[rgb(var(--navbar-text-color))] 
-          flex flex-row items-stretch justify-between ease-in w-full h-[2.6rem]
+          flex flex-row items-stretch justify-between ease-in h-[2.6rem]
           ${
             isSidebarOpen
-              ? "md:w-[calc(100vw-17.05rem)]"
-              : "md:w-[calc(100vw-4.05rem)]"
-          } `}
+              ? "md:w-[calc(100vw-16.0rem-var(--scrollbar-width))]"
+              : "md:w-[calc(100vw-3.0rem-var(--scrollbar-width))]"
+          }`}
         ref={headerRef}
       >
         <div className="flex space-x-2">
@@ -242,4 +242,4 @@ const Navbar = ({
   );
 };
 
-export default Navbar;
+export default memo(Navbar);

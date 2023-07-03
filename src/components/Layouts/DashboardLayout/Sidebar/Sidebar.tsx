@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { memo, useEffect, useRef, useState } from "react";
 import * as Accordion from "@radix-ui/react-accordion";
 import Icon from "@mdi/react";
 import { mdiTriangleSmallDown, mdiWallFire, mdiCog } from "@mdi/js";
@@ -47,7 +47,7 @@ function Sidebar({
 
   return (
     <aside
-      className={`bg-[rgb(var(--sidebar-background))] fixed top-14 md:top-[0] md:start-[0] ${
+      className={`bg-[rgb(var(--sidebar-background))] fixed top-[2.6rem] md:top-[0] md:start-[0] ${
         // For <md screens
         isSidebarOpen ? "-start-[0]" : "-start-64"
         // isSidebarOpen ? "left-[--sideabr-offset]" : "-left-64"
@@ -69,7 +69,13 @@ function Sidebar({
             size={1}
             className={`mr-1 duration-300 ${!isSidebarOpen && "ml-2"}`}
           />
-          <span className={`${!isSidebarOpen && "hidden"}`}>Test Header</span>
+          <span
+            className={`whitespace-nowrap overflow-hidden text-clip ${
+              !isSidebarOpen && "hidden"
+            }`}
+          >
+            Test Header
+          </span>
         </span>
         <Icon
           path={mdiTriangleSmallDown}
@@ -145,4 +151,4 @@ function Sidebar({
   );
 }
 
-export default Sidebar;
+export default memo(Sidebar);

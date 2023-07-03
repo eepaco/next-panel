@@ -4,6 +4,8 @@ export default function useHandleResizeTransition(
   elRef: HTMLElement | undefined | null,
   deps: DependencyList
 ) {
+  console.log("desp", deps);
+
   useEffect(() => {
     elRef?.classList.add("duration-300");
 
