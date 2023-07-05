@@ -68,7 +68,7 @@
 }
 
 body {
-  background-color: var(--navbar-item-background-hover);
+  background-color: #fafafa;
 }
 
 /* @media screen and (max-width: 768px) {

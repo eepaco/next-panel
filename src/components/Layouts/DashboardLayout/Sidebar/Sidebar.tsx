@@ -73,7 +73,7 @@ function Sidebar({
           />
           <span
             className={`whitespace-nowrap overflow-hidden text-clip duration-200 ${
-              !isSidebarOpen ? "opacity-0 -ml-[2rem]" : "opacity-100 ml-0"
+              !isSidebarOpen ? "opacity-0 -ms-[2rem]" : "opacity-100 ms-0"
             }`}
           >
             Test Header

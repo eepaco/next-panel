@@ -38,7 +38,7 @@ const AccordionTrigger = React.forwardRef(function x(
             <Icon
               path={icon}
               className={`text-gray-700 me-2 duration-200 ${
-                !showTitle && "ml-1"
+                !showTitle && "ms-[0.3rem]"
               }`}
               aria-hidden
               size={showTitle ? 0.8 : 0.9}
@@ -46,7 +46,7 @@ const AccordionTrigger = React.forwardRef(function x(
           )}
           <span
             className={`duration-200 ${
-              !showTitle ? "opacity-0 -ml-[2rem]" : "opacity-100 ml-0"
+              !showTitle ? "opacity-0 -ms-[2rem]" : "opacity-100 ms-0"
             }`}
           >
             {children}
