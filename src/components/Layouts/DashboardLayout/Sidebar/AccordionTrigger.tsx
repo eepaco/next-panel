@@ -44,7 +44,13 @@ const AccordionTrigger = React.forwardRef(function x(
               size={showTitle ? 0.8 : 0.9}
             />
           )}
-          <span className={`${!showTitle && "hidden"}`}>{children}</span>
+          <span
+            className={`duration-200 ${
+              !showTitle ? "opacity-0 -ml-[2rem]" : "opacity-100 ml-0"
+            }`}
+          >
+            {children}
+          </span>
         </div>
         <Icon
           path={mdiChevronRight}

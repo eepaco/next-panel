@@ -36,8 +36,8 @@ export default function DashboardLayout(props: {
         <div
           className={`bg-yellow-500 w-full mt-[2.6rem] ease-in ${
             isSidebarOpen && isSidebarHoverDisabled
-              ? `md:w-[calc(100vw-16.0rem-var(--scrollbar-width))]`
-              : `md:w-[calc(100vw-3.0rem-var(--scrollbar-width))]`
+              ? `md:w-[calc(100%-16.0rem)]`
+              : `md:w-[calc(100%-3.0rem)]`
           }`}
           ref={contentRef}
         >

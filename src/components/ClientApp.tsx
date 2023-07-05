@@ -13,13 +13,6 @@ export default function ClientApp(props: { children: ReactNode }) {
     });
   }, [lang]);
 
-  useEffect(() => {
-    document.documentElement.style.setProperty(
-      "--scrollbar-width",
-      window.innerWidth - document.documentElement.clientWidth + "px"
-    );
-  }, []);
-
   return (
     <DirectionProvider dir={dir}>
       <IntlProvider

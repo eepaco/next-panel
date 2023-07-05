@@ -51,7 +51,9 @@ function Sidebar({
         // For <md screens
         isSidebarOpen ? "-start-[0]" : "-start-64"
         // isSidebarOpen ? "left-[--sideabr-offset]" : "-left-64"
-      } ${isSidebarOpen ? "w-64" : "w-12"} h-screen ease-in`}
+      } ${
+        isSidebarOpen ? "w-64" : "w-12"
+      } h-screen ease-in z-[2] overflow-hidden`}
       onPointerMove={handleSidebarMouseOver}
       onPointerLeave={handleSidebarMouseLeave}
       ref={sidebarRef}
@@ -70,8 +72,8 @@ function Sidebar({
             className={`mr-1 duration-300 ${!isSidebarOpen && "ml-2"}`}
           />
           <span
-            className={`whitespace-nowrap overflow-hidden text-clip ${
-              !isSidebarOpen && "hidden"
+            className={`whitespace-nowrap overflow-hidden text-clip duration-200 ${
+              !isSidebarOpen ? "opacity-0 -ml-[2rem]" : "opacity-100 ml-0"
             }`}
           >
             Test Header
