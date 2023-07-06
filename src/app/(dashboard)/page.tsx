@@ -1,6 +1,6 @@
 "use client";
 
-import Module from "@/components/Module";
+import Module from "@/components/Module/Module";
 import { FormattedMessage } from "react-intl";
 
 export default function Home() {
