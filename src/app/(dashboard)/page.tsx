@@ -1,19 +1,11 @@
 "use client";
 
 import Module from "@/components/Module/Module";
-import { FormattedMessage } from "react-intl";
 
 export default function Home() {
   return (
     <div>
-      <h1 className="text-6xl">
-        <FormattedMessage
-          defaultMessage={"Simple Message"} // Fallback string if ID not found for translation
-          id="home.name"
-        />
-      </h1>
-
-      <div className="p-2">
+      <div className="p-2 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
         <Module title="Overview">
           <div className="flex items-center text-sm my-4">
             <span className="text-gray-400 min-w-[4rem]">Title</span>

@@ -1,11 +1,21 @@
 import * as DropdownMenuPrimitive from "@radix-ui/react-dropdown-menu";
 import Icon from "@mdi/react";
 import { mdiChevronRight, mdiCloseThick, mdiCog, mdiCursorMove } from "@mdi/js";
-import React, { ReactNode, useState } from "react";
+import React, { ReactNode, RefObject, useState } from "react";
 
-const DropdownMenu = (props: { children: ReactNode }) => {
+const DropdownMenu = (props: {
+  children: ReactNode;
+  moduleRef: RefObject<HTMLDivElement>;
+}) => {
   const [count, setCount] = useState(1);
   const [tempCount, setTempCount] = useState(1);
+  const moduleElement = props.moduleRef.current;
+
+  const handleResizeClick = (number: 1 | 2 | 3 | 4): void => {
+    moduleElement?.classList.remove(`col-span-${count}`);
+    moduleElement?.classList.add(`col-span-${number}`);
+    setCount(number);
+  };
 
   return (
     <div className="relative inline-block text-left">
@@ -28,7 +38,7 @@ const DropdownMenu = (props: { children: ReactNode }) => {
             <DropdownMenuPrimitive.Sub>
               <DropdownMenuPrimitive.SubTrigger
                 className={`
-                  flex w-full cursor-pointer select-none items-center rounded-md px-2 py-2 outline-none
+                  flex w-full cursor-pointer select-none items-center rounded-md px-1 py-1 outline-none
                   text-[#2d2d2d] focus:bg-gray-50
                   data-[state=open]:bg-gray-100 data-[disabled]:text-gray-300 
                   data-[disabled]:pointer-events-none
@@ -64,7 +74,7 @@ const DropdownMenu = (props: { children: ReactNode }) => {
                           tempCount >= 1 && "bg-green-700"
                         } hover:bg-green-700`}
                         onMouseOver={() => setTempCount(1)}
-                        onClick={() => setCount(1)}
+                        onClick={() => handleResizeClick(1)}
                       ></div>
                       <div
                         className={`h-4 w-4 border border-gray-700 cursor-pointer ${
@@ -73,7 +83,7 @@ const DropdownMenu = (props: { children: ReactNode }) => {
                           tempCount >= 2 && "bg-green-700"
                         } hover:bg-green-700 hidden sm:block`}
                         onMouseOver={() => setTempCount(2)}
-                        onClick={() => setCount(2)}
+                        onClick={() => handleResizeClick(2)}
                       ></div>
                       <div
                         className={`h-4 w-4 border border-gray-700 cursor-pointer ${
@@ -82,7 +92,7 @@ const DropdownMenu = (props: { children: ReactNode }) => {
                           tempCount >= 3 && "bg-green-700"
                         } hover:bg-green-700 hidden md:block`}
                         onMouseOver={() => setTempCount(3)}
-                        onClick={() => setCount(3)}
+                        onClick={() => handleResizeClick(3)}
                       ></div>
                       <div
                         className={`h-4 w-4 border border-gray-700 cursor-pointer ${
@@ -91,7 +101,7 @@ const DropdownMenu = (props: { children: ReactNode }) => {
                           tempCount >= 4 && "bg-green-700"
                         } hover:bg-green-700 hidden lg:block`}
                         onMouseOver={() => setTempCount(4)}
-                        onClick={() => setCount(4)}
+                        onClick={() => handleResizeClick(4)}
                       ></div>
                     </div>
                     <div className="mt-1">{count} x 1</div>
@@ -102,7 +112,7 @@ const DropdownMenu = (props: { children: ReactNode }) => {
 
             <DropdownMenuPrimitive.Item
               className={`
-                  flex cursor-pointer select-none items-center rounded-md px-2 py-2 outline-none
+                  flex cursor-pointer select-none items-center rounded-md px-1 py-1 outline-none
                   text-[#2d2d2d] focus:bg-gray-50
                   data-[highlighted]:bg-gray-100
                 `}
@@ -115,7 +125,7 @@ const DropdownMenu = (props: { children: ReactNode }) => {
 
             <DropdownMenuPrimitive.Item
               className={`
-                  flex cursor-pointer select-none items-center rounded-md px-2 py-2 outline-none
+                  flex cursor-pointer select-none items-center rounded-md px-1 py-1 outline-none
                   text-[#2d2d2d] focus:bg-gray-50
                   data-[highlighted]:bg-gray-100
                 `}
