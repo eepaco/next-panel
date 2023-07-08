@@ -1,16 +1,43 @@
 "use client";
 
-import { FormattedMessage } from "react-intl";
+import Module from "@/components/Module/Module";
+import ModuleWrapper from "@/components/Module/ModuleWrapper";
 
 export default function Home() {
   return (
-    <div style={{ height: 1000 }}>
-      <h1 className="text-6xl">
-        <FormattedMessage
-          defaultMessage={"Simple Message"} // Fallback string if ID not found for translation
-          id="home.name"
-        />
-      </h1>
-    </div>
+    <ModuleWrapper>
+      <Module title="Overview">
+        <div className="flex items-center text-sm my-4">
+          <span className="text-gray-400 min-w-[4rem]">Title</span>
+          <span className="text-gray-600">Some Information</span>
+        </div>
+        <div className="flex items-center text-sm my-4">
+          <span className="text-gray-400 min-w-[4rem]">Title</span>
+          <span className="text-gray-600">Some Information</span>
+        </div>
+        <div className="flex items-center text-sm my-4">
+          <span className="text-gray-400 min-w-[4rem]">Title</span>
+          <span className="text-gray-600">Some Information</span>
+        </div>
+        <div className="flex items-center text-sm my-4">
+          <span className="text-gray-400 min-w-[4rem]">Title</span>
+          <span className="text-gray-600">Some Information</span>
+        </div>
+        <div className="flex items-center text-sm my-4">
+          <span className="text-gray-400 min-w-[4rem]">Title</span>
+          <span className="text-gray-600">Some Information</span>
+        </div>
+        <div className="flex items-center text-sm my-4">
+          <span className="text-gray-400 min-w-[4rem]">Title</span>
+          <span className="text-gray-600">Some Information</span>
+        </div>
+        <div className="flex items-center text-sm my-4">
+          <span className="text-gray-400 min-w-[4rem]">Title</span>
+          <span className="text-gray-600">Some Information</span>
+        </div>
+      </Module>
+      <Module title="Module Heading">children here</Module>
+      <Module title="Module Heading">children here</Module>
+    </ModuleWrapper>
   );
 }

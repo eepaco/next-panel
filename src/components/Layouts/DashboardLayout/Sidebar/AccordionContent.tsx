@@ -19,7 +19,7 @@ const AccordionContent = React.forwardRef(function x(
       {...props}
       ref={forwardedRef}
     >
-      <div className="">{children}</div>
+      {children}
     </Accordion.Content>
   );
 });

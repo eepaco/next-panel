@@ -34,10 +34,10 @@ export default function DashboardLayout(props: {
       />
       <div className={`flex justify-end w-full`}>
         <div
-          className={`bg-yellow-500 w-full mt-[2.6rem] ease-in ${
+          className={`w-full mt-[2.6rem] ease-in ${
             isSidebarOpen && isSidebarHoverDisabled
-              ? `md:w-[calc(100vw-17.05rem)]`
-              : `md:w-[calc(100vw-4.05rem)]`
+              ? `md:w-[calc(100%-16.0rem)]`
+              : `md:w-[calc(100%-3.0rem)]`
           }`}
           ref={contentRef}
         >

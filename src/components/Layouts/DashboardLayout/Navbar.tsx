@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { memo, useRef } from "react";
 import * as NavigationMenu from "@radix-ui/react-navigation-menu";
 import Icon from "@mdi/react";
 import {
@@ -34,17 +34,15 @@ const Navbar = ({
 
   return (
     <NavigationMenu.Root
-      className={`w-full md:w-fit fixed end-0 top-[0] z-[1]`}
+      className={`w-full fixed end-0 top-[0] z-[1] ease-in ${
+        isSidebarOpen ? "md:w-[calc(100%-16.0rem)]" : "md:w-[calc(100%-3.0rem)]"
+      }`}
+      ref={headerRef}
     >
       <NavigationMenu.List
         className={`bg-[var(--navbar-background-color)] text-[rgb(var(--navbar-text-color))] 
-          flex flex-row items-stretch justify-between ease-in w-full h-[2.6rem]
-          ${
-            isSidebarOpen
-              ? "md:w-[calc(100vw-17.05rem)]"
-              : "md:w-[calc(100vw-4.05rem)]"
-          } `}
-        ref={headerRef}
+          flex flex-row items-stretch justify-between h-[2.6rem] left-[100%]
+          `}
       >
         <div id="navbar-start-container" className="flex space-x-2">
           <NavigationMenu.Item
@@ -160,7 +158,7 @@ const Navbar = ({
 
           <NavigationMenu.Item className="flex">
             <NavigationMenu.Trigger
-              className="hover:bg-[var(--navbar-item-background-hover)] focus:shadow-white flex items-center select-none gap-[4px] px-2 focus:shadow-[0_0_0_2px] cursor-pointer"
+              className="hover:bg-[var(--navbar-item-background-hover)] focus:shadow-white flex items-center select-none gap-[4px] px-2 focus:shadow-[0_0_0_2px] cursor-pointer relative"
               onPointerMove={disableHoverEffect}
               onPointerLeave={disableHoverEffect}
             >
@@ -242,4 +240,4 @@ const Navbar = ({
   );
 };
 
-export default Navbar;
+export default memo(Navbar);
