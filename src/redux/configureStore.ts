@@ -1,7 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import UIConfigSlice from "./UIConfig/UIConfigSlice";
 import UserSlice from "./user/UserSlice";
-import { createWrapper } from "next-redux-wrapper";
 
 const store = configureStore({
   reducer: {
