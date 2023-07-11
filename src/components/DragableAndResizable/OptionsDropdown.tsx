@@ -1,23 +1,15 @@
 import * as DropdownMenuPrimitive from "@radix-ui/react-dropdown-menu";
 import Icon from "@mdi/react";
 import { mdiChevronRight, mdiCloseThick, mdiCog, mdiCursorMove } from "@mdi/js";
-import React, {
-	ReactNode,
-	// RefObject,
-	useState,
-} from "react";
+import React, { ReactNode, RefObject, useState } from "react";
 
-const OptionsDropdown = (props: {
-	children: ReactNode;
-	// moduleRef: RefObject<HTMLDivElement>
-}) => {
+const OptionsDropdown = (props: { children: ReactNode; onRemove: any }) => {
 	const [count, setCount] = useState(1);
 	const [tempCount, setTempCount] = useState(1);
-	// const moduleElement = props.moduleRef.current;
 
 	// const handleResizeClick = (number: 1 | 2 | 3 | 4): void => {
-	// 	moduleElement?.classList.remove(`col-span-${count}`);
-	// 	moduleElement?.classList.add(`col-span-${number}`);
+	// 	widget?.classList.remove(`col-span-${count}`);
+	// 	widget?.classList.add(`col-span-${number}`);
 	// 	setCount(number);
 	// };
 
@@ -123,6 +115,7 @@ const OptionsDropdown = (props: {
                   text-[#2d2d2d] focus:bg-gray-50
                   data-[highlighted]:bg-gray-100
                 `}
+							onClick={props.onRemove}
 						>
 							<Icon path={mdiCloseThick} size={0.7} className="me-2" />
 							<span className="flex-grow">Remove</span>
