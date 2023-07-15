@@ -23,8 +23,8 @@ const OptionsDropdown = (props: { children: ReactNode; onRemove: any }) => {
 						align="end"
 						sideOffset={5}
 						className={`
-              will-change-[opacity,transform] data-[side=top]:animate-slideDownAndFade data-[side=right]:animate-slideLeftAndFade
-              data-[side=bottom]:animate-slideUpAndFade data-[side=left]:animate-slideRightAndFade
+              will-change-[opacity,transform] data-[side=top]:animate-[--slideDownAndFade] data-[side=right]:animate-[--slideLeftAndFade]
+              data-[side=bottom]:animate-[--slideUpAndFade] data-[side=left]:animate-[--slideRightAndFade]
               rounded-lg px-1.5 py-1 shadow-md w-36
               bg-white border
             `}
@@ -47,11 +47,11 @@ const OptionsDropdown = (props: { children: ReactNode; onRemove: any }) => {
 							<DropdownMenuPrimitive.Portal>
 								<DropdownMenuPrimitive.SubContent
 									className={`
-                    origin-radix-dropdown-menu radix-side-right:animate-scale-in
+                    origin-radix-dropdown-menu radix-side-right:animate-[--scaleIn]
                     w-full rounded-md px-1 py-1 text-xs shadow-md
                     bg-white border
-                    data-[side=top]:animate-slideDownAndFade data-[side=right]:animate-slideLeftAndFade 
-                    data-[side=bottom]:animate-slideUpAndFade data-[side=left]:animate-slideRightAndFade
+                    data-[side=top]:animate-[--slideDownAndFade] data-[side=right]:animate-[--slideLeftAndFade]
+                    data-[side=bottom]:animate-[--slideUpAndFade] data-[side=left]:animate-[--slideRightAndFade]
                   `}
 								>
 									<DropdownMenuPrimitive.Item
