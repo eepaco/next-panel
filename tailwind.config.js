@@ -14,6 +14,7 @@ module.exports = {
 			animation: {},
 			colors: {
 				primary: "rgb(var(--primary-color) / <alpha-value>)",
+				secondary: "rgb(var(--secondary-color) / <alpha-value>)",
 			},
 		},
 	},

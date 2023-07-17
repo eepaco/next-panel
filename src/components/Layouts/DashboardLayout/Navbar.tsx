@@ -40,7 +40,7 @@ const Navbar = ({ toggleClick, isSidebarOpen }: { isSidebarOpen: boolean; toggle
 			>
 				<div id="navbar-start-container" className="flex space-x-2">
 					<NavigationMenu.Item
-						className="hover:bg-primary/25 flex items-center select-none px-2 cursor-pointer"
+						className="hover:bg-[--navbar-item-background-hover-color] flex items-center select-none px-2 cursor-pointer"
 						onClick={toggleClick}
 					>
 						<Icon path={mdiMenu} size={0.8} />
@@ -56,7 +56,7 @@ const Navbar = ({ toggleClick, isSidebarOpen }: { isSidebarOpen: boolean; toggle
 
 				<div id="navbar-end-container" className="flex space-x-2">
 					<NavigationMenu.Item
-						className="hover:bg-[--navbar-item-background-hover-color] focus:shadow-black flex items-center select-none px-2 focus:shadow-[0_0_0_2px] cursor-pointer"
+						className="hover:bg-[--navbar-item-background-hover-color] focus:shadow-black flex items-center select-none px-2 focus:shadow-[0_0_0_1px] cursor-pointer"
 						onClick={() => alert("open console")}
 					>
 						<Icon path={mdiConsoleLine} size={0.8} />
@@ -64,7 +64,7 @@ const Navbar = ({ toggleClick, isSidebarOpen }: { isSidebarOpen: boolean; toggle
 
 					<NavigationMenu.Item className="flex">
 						<NavigationMenu.Trigger
-							className="hover:bg-[--navbar-item-background-hover-color] focus:shadow-[--navbar-item-border-focus-color] flex items-center select-none gap-[4px] px-2 focus:shadow-[0_0_0_2px] cursor-pointer"
+							className="hover:bg-[--navbar-item-background-hover-color] focus:bg-[--navbar-item-background-hover-color] focus:shadow-[--navbar-item-border-focus-color] flex items-center select-none gap-[4px] px-2 focus:shadow-[0_0_0_1px] cursor-pointer"
 							onPointerMove={disableHoverEffect}
 							onPointerLeave={disableHoverEffect}
 						>
@@ -98,7 +98,7 @@ const Navbar = ({ toggleClick, isSidebarOpen }: { isSidebarOpen: boolean; toggle
 
 					<NavigationMenu.Item className="flex">
 						<NavigationMenu.Trigger
-							className="hover:bg-[var(--navbar-background-color)] focus:shadow-[--navbar-item-border-focus-color] flex items-center select-none gap-[4px] px-2 focus:shadow-[0_0_0_2px] cursor-pointer"
+							className="hover:bg-[--navbar-item-background-hover-color] focus:bg-[--navbar-item-background-hover-color] focus:shadow-[--navbar-item-border-focus-color] flex items-center select-none gap-[4px] px-2 focus:shadow-[0_0_0_1px] cursor-pointer"
 							onPointerMove={disableHoverEffect}
 							onPointerLeave={disableHoverEffect}
 						>
@@ -149,12 +149,12 @@ const Navbar = ({ toggleClick, isSidebarOpen }: { isSidebarOpen: boolean; toggle
 
 					<NavigationMenu.Item className="flex">
 						<NavigationMenu.Trigger
-							className="hover:bg-[--navbar-item-background-hover-color] focus:shadow-[--navbar-item-border-focus-color] flex items-center select-none gap-[4px] px-2 focus:shadow-[0_0_0_2px] cursor-pointer relative"
+							className="hover:bg-[--navbar-item-background-hover-color] focus:bg-[--navbar-item-background-hover-color] focus:shadow-[--navbar-item-border-focus-color] flex items-center select-none gap-[4px] px-2 focus:shadow-[0_0_0_1px] cursor-pointer relative"
 							onPointerMove={disableHoverEffect}
 							onPointerLeave={disableHoverEffect}
 						>
 							<Icon path={mdiBellOutline} size={0.8} />{" "}
-							<span className="bg-[rgb(var(--number-background-color))] w-[16px] h-[16px] flex justify-center items-center rounded-full text-xs absolute end-[0.25rem] top-[0] mt-1 me-1">
+							<span className="bg-[#e28822] w-[16px] h-[16px] flex justify-center items-center rounded-full text-xs absolute end-[0.25rem] top-[0] mt-1 me-1">
 								3
 							</span>
 							<Icon
@@ -179,7 +179,7 @@ const Navbar = ({ toggleClick, isSidebarOpen }: { isSidebarOpen: boolean; toggle
 
 					<NavigationMenu.Item className="flex">
 						<NavigationMenu.Trigger
-							className="hover:bg-[--navbar-item-background-hover-color] focus:shadow-[--navbar-item-border-focus-color] flex items-center select-none gap-[4px] px-2 focus:shadow-[0_0_0_2px] cursor-pointer"
+							className="hover:bg-[--navbar-item-background-hover-color] focus:bg-[--navbar-item-background-hover-color] focus:shadow-[--navbar-item-border-focus-color] flex items-center select-none gap-[4px] px-2 focus:shadow-[0_0_0_1px] cursor-pointer"
 							onPointerMove={disableHoverEffect}
 							onPointerLeave={disableHoverEffect}
 						>

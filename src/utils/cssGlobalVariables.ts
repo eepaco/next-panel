@@ -26,18 +26,19 @@ type CssNavbarGlobalHexColors = {
 
 type CssSidebarGlobalHexColors = {
 	"sidebar-background-color": string;
+	"sidebar-header-text-color": string;
 	"sidebar-header-background-color": string;
 	"sidebar-header-background-hover-color": string;
-	"sidebar-item-background-color": string;
-	"sidebar-item-background-hover-color": string;
+	"sidebar-trigger-background-color": string;
+	"sidebar-trigger_text-color": string;
+	"sidebar-trigger_icon-color": string;
+	"sidebar-trigger-background-active-color": string;
+	"sidebar-trigger_text-active-color": string;
+	"sidebar-trigger_icon-active-color": string;
+
 	"sidebar-item-text-color": string;
-	"sidebar-item-icon-color": string;
-	"sidebar-item-text-active-color": string;
-	"sidebar-item-icon-active-color": string;
-	"sidebar-subitem-text-color": string;
-	"sidebar-subitem-icon-color": string;
-	"sidebar-subitem-text-hover-color": string;
-	"sidebar-subitem-icon-hover-color": string;
+	"sidebar-item-background-active-color": string;
+	"sidebar-item-background-hover-color": string;
 };
 
 type CssAlertGlobalHexColors = {
@@ -88,12 +89,13 @@ export function getComputedCssGlobalColors(
 	return new TypedMergeable({
 		"body-background-color": primaryColor,
 		"navbar-background-color": variables["navbar-background-color"] ?? primaryColor,
+		"sidebar-background-color": variables["sidebar-background-color"] ?? secondaryColor,
 	}).merge((obj) => ({
 		"navbar-item-text-color":
 			variables["navbar-item-text-color"] ?? getContrastColor(obj["navbar-background-color"]),
 		"navbar-item-background-hover-color":
 			variables["navbar-item-background-hover-color"] ??
-			`${Object.values(hexToRgb(obj["navbar-background-color"])).join(" ")} / 40`,
+			adjustColorBrightness(obj["navbar-background-color"], 10),
 		"navbar-item-border-focus-color":
 			variables["navbar-item-border-focus-color"] ??
 			getContrastColor(obj["navbar-background-color"]),
@@ -109,20 +111,35 @@ export function getComputedCssGlobalColors(
 			variables["navbar-dropdown_menu_item-text-color"] ??
 			(getContrastColor(obj["navbar-background-color"]) === "#ffffff" ? "#000000" : "#ffffff"),
 
-		"sidebar-background-color": variables["sidebar-background-color"] ?? "",
 		"sidebar-header-background-color": variables["sidebar-header-background-color"] ?? "",
 		"sidebar-header-background-hover-color":
-			variables["sidebar-header-background-hover-color"] ?? "",
-		"sidebar-item-background-color": variables["sidebar-item-background-color"] ?? "",
-		"sidebar-item-background-hover-color": variables["sidebar-item-background-hover-color"] ?? "",
-		"sidebar-item-text-color": variables["sidebar-item-text-color"] ?? "",
-		"sidebar-item-icon-color": variables["sidebar-item-icon-color"] ?? "",
-		"sidebar-item-text-active-color": variables["sidebar-item-text-active-color"] ?? "",
-		"sidebar-item-icon-active-color": variables["sidebar-item-icon-active-color"] ?? "",
-		"sidebar-subitem-text-color": variables["sidebar-subitem-text-color"] ?? "",
-		"sidebar-subitem-icon-color": variables["sidebar-subitem-icon-color"] ?? "",
-		"sidebar-subitem-text-hover-color": variables["sidebar-subitem-text-hover-color"] ?? "",
-		"sidebar-subitem-icon-hover-color": variables["sidebar-subitem-icon-hover-color"] ?? "",
+			variables["sidebar-header-background-hover-color"] ??
+			adjustColorBrightness(obj["sidebar-background-color"], -10),
+		"sidebar-header-text-color":
+			variables["sidebar-header-text-color"] ??
+			adjustColorBrightness(obj["sidebar-background-color"], -540),
+		"sidebar-trigger-background-color":
+			variables["sidebar-trigger-background-color"] ?? obj["sidebar-background-color"],
+		"sidebar-trigger_text-color":
+			variables["sidebar-trigger_text-color"] ?? getContrastColor(obj["sidebar-background-color"]),
+		"sidebar-trigger_icon-color":
+			variables["sidebar-trigger_icon-color"] ?? getContrastColor(obj["sidebar-background-color"]),
+		"sidebar-trigger-background-active-color":
+			variables["sidebar-trigger-background-active-color"] ??
+			adjustColorBrightness(obj["sidebar-background-color"], -8),
+		"sidebar-trigger_text-active-color":
+			variables["sidebar-trigger_text-active-color"] ?? primaryColor,
+		"sidebar-trigger_icon-active-color":
+			variables["sidebar-trigger_icon-active-color"] ?? primaryColor,
+
+		"sidebar-item-text-color":
+			variables["sidebar-item-text-color"] ?? getContrastColor(obj["sidebar-background-color"]),
+		"sidebar-item-background-active-color":
+			variables["sidebar-item-background-active-color"] ??
+			adjustColorBrightness(obj["sidebar-background-color"], -8),
+		"sidebar-item-background-hover-color":
+			variables["sidebar-item-background-hover-color"] ??
+			adjustColorBrightness(obj["sidebar-background-color"], -4),
 	})).value;
 }
 
@@ -160,6 +177,13 @@ function hexToRgb(hex: string): { r: number; g: number; b: number } {
 		: { r: 0, g: 0, b: 0 };
 }
 
+function rgbToHex(r: number, g: number, b: number): string {
+	const hexR = r.toString(16).padStart(2, "0");
+	const hexG = g.toString(16).padStart(2, "0");
+	const hexB = b.toString(16).padStart(2, "0");
+	return `#${hexR}${hexG}${hexB}`;
+}
+
 // https://stackoverflow.com/a/11868159
 function getContrastColor(hexColor: string): string {
 	const rgb = hexToRgb(hexColor)!;
@@ -168,3 +192,25 @@ function getContrastColor(hexColor: string): string {
 	const brightness = Math.round((rgb.r * 299 + rgb.g * 587 + rgb.b * 114) / 1000);
 	return brightness > 125 ? "#000000" : "#ffffff";
 }
+
+// from poe.com
+function adjustColorBrightness(hexColor: string, percent: number): string {
+	// Remove the '#' symbol and convert to RGB
+	const rgbColor = hexToRgb(hexColor.substring(1));
+
+	// Adjust brightness
+	const adjustedRgbColor = {
+		r: Math.round(Math.min(255, (rgbColor.r * (100 + percent)) / 100)),
+		g: Math.round(Math.min(255, (rgbColor.g * (100 + percent)) / 100)),
+		b: Math.round(Math.min(255, (rgbColor.b * (100 + percent)) / 100)),
+	};
+
+	// Convert RGB back to HEX
+	const adjustedHexColor = rgbToHex(adjustedRgbColor.r, adjustedRgbColor.g, adjustedRgbColor.b);
+
+	return adjustedHexColor;
+}
+
+const originalColor = "#696969";
+const brighterColor = adjustColorBrightness(originalColor, 20); // 20% brighter
+const darkerColor = adjustColorBrightness(originalColor, -20); // 20% darker
