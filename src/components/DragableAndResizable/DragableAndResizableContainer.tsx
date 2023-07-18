@@ -10,8 +10,8 @@ export default function DragableAndResizableContainer(props: {
 	const handleLayoutChange = (currentLayout: Layout[], allLayouts: Layouts): void => {
 		console.log("LAYOUT CHANGED!!");
 
-		console.log(currentLayout);
-		console.log(allLayouts);
+		// console.log(currentLayout);
+		// console.log(allLayouts);
 
 		// localStorage.setItem("grid-layout", JSON.stringify(layouts));
 	};
