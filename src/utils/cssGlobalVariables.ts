@@ -35,10 +35,24 @@ type CssSidebarGlobalHexColors = {
 	"sidebar-trigger-background-active-color": string;
 	"sidebar-trigger_text-active-color": string;
 	"sidebar-trigger_icon-active-color": string;
-
 	"sidebar-item-text-color": string;
 	"sidebar-item-background-active-color": string;
 	"sidebar-item-background-hover-color": string;
+	"sidebar-content-background-active-color": string;
+};
+
+type CssWidgetGlobalHexColors = {
+	"widget-background-color": string;
+	"widget-border-color": string;
+	"widget-heading-color": string;
+	"widget-content-color": string;
+	"widget-dropdown_menu_button-color": string;
+	"widget-dropdown_menu-background-color": string;
+	"widget-dropdown_menu-text-color": string;
+	"widget-dropdown_menu-background-hover-color": string;
+	"widget-dropdown_menu-text-hover-color": string;
+	"widget-dropdown_menu-background-active-color": string;
+	"widget-dropdown_menu-text-active-color": string;
 };
 
 type CssAlertGlobalHexColors = {
@@ -81,13 +95,22 @@ type CssInputGlobalHexColors = {
 
 export function getComputedCssGlobalColors(
 	variables: CssTailwindGlobalHexColors &
-		Partial<CssBodyGlobalHexColors & CssNavbarGlobalHexColors & CssSidebarGlobalHexColors>
-): CssBodyGlobalHexColors & CssNavbarGlobalHexColors & CssSidebarGlobalHexColors {
+		Partial<
+			CssBodyGlobalHexColors &
+				CssNavbarGlobalHexColors &
+				CssSidebarGlobalHexColors &
+				CssWidgetGlobalHexColors
+		>
+): CssBodyGlobalHexColors &
+	CssNavbarGlobalHexColors &
+	CssSidebarGlobalHexColors &
+	CssWidgetGlobalHexColors {
 	const primaryColor = variables["primary-color"];
 	const secondaryColor = variables["secondary-color"];
 
 	return new TypedMergeable({
-		"body-background-color": primaryColor,
+		"body-background-color":
+			variables["body-background-color"] ?? adjustColorBrightness(secondaryColor, -6),
 		"navbar-background-color": variables["navbar-background-color"] ?? primaryColor,
 		"sidebar-background-color": variables["sidebar-background-color"] ?? secondaryColor,
 	}).merge((obj) => ({
@@ -131,7 +154,6 @@ export function getComputedCssGlobalColors(
 			variables["sidebar-trigger_text-active-color"] ?? primaryColor,
 		"sidebar-trigger_icon-active-color":
 			variables["sidebar-trigger_icon-active-color"] ?? primaryColor,
-
 		"sidebar-item-text-color":
 			variables["sidebar-item-text-color"] ?? getContrastColor(obj["sidebar-background-color"]),
 		"sidebar-item-background-active-color":
@@ -139,13 +161,48 @@ export function getComputedCssGlobalColors(
 			adjustColorBrightness(obj["sidebar-background-color"], -8),
 		"sidebar-item-background-hover-color":
 			variables["sidebar-item-background-hover-color"] ??
+			adjustColorBrightness(obj["sidebar-background-color"], -6),
+		"sidebar-content-background-active-color":
+			variables["sidebar-content-background-active-color"] ??
 			adjustColorBrightness(obj["sidebar-background-color"], -4),
+
+		"widget-background-color":
+			variables["widget-background-color"] ??
+			adjustColorBrightness(obj["body-background-color"], 10),
+		"widget-border-color": variables["widget-border-color"] ?? "#b3b3b3",
+		"widget-heading-color":
+			variables["widget-heading-color"] ?? getContrastColor(obj["body-background-color"]),
+		"widget-content-color": variables["widget-content-color"] ?? "#8c8c8c",
+		"widget-dropdown_menu_button-color":
+			variables["widget-dropdown_menu_button-color"] ??
+			getContrastColor(obj["body-background-color"]),
+		"widget-dropdown_menu-background-color":
+			variables["widget-dropdown_menu-background-color"] ??
+			adjustColorBrightness(obj["body-background-color"], 20),
+		"widget-dropdown_menu-text-color":
+			variables["widget-dropdown_menu-text-color"] ??
+			getContrastColor(obj["body-background-color"]),
+		"widget-dropdown_menu-background-hover-color":
+			variables["widget-dropdown_menu-background-hover-color"] ??
+			getContrastColor(obj["body-background-color"]),
+		"widget-dropdown_menu-text-hover-color":
+			variables["widget-dropdown_menu-text-hover-color"] ??
+			(getContrastColor(obj["body-background-color"]) === "#ffffff" ? "#000000" : "#ffffff"),
+		"widget-dropdown_menu-background-active-color":
+			variables["widget-dropdown_menu-background-active-color"] ??
+			getContrastColor(obj["body-background-color"]),
+		"widget-dropdown_menu-text-active-color":
+			variables["widget-dropdown_menu-text-active-color"] ??
+			(getContrastColor(obj["body-background-color"]) === "#ffffff" ? "#000000" : "#ffffff"),
 	})).value;
 }
 
 export function mapPropetiesToCss(
 	tailwindColors: CssTailwindGlobalHexColors,
-	colors: CssBodyGlobalHexColors & CssNavbarGlobalHexColors & CssSidebarGlobalHexColors
+	colors: CssBodyGlobalHexColors &
+		CssNavbarGlobalHexColors &
+		CssSidebarGlobalHexColors &
+		CssWidgetGlobalHexColors
 ) {
 	const result = [];
 	result.push(

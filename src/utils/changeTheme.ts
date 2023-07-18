@@ -36,6 +36,7 @@ export const themes = {
 		"sidebar-item-background-active-color": "#484848",
 		"sidebar-trigger_text-active-color": "#f7f7f7",
 		"sidebar-trigger_icon-active-color": "#f7f7f7",
+		"sidebar-content-background-active-color": "#404040",
 	},
 	mariner: {
 		"primary-color": "#2b76b9",

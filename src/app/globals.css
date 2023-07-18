@@ -5,7 +5,7 @@
 @import "./animations.css";
 
 body {
-	background-color: #fafafa;
+	background-color: var(--body-background-color);
 }
 
 /* @media screen and (max-width: 768px) {
