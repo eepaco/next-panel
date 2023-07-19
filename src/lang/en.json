@@ -1,36 +1,36 @@
 {
-  "header.dark-theme": "Dark",
-  "header.light-theme": "Light",
+	"header.dark-theme": "Dark",
+	"header.light-theme": "Light",
 
-  "sidebar.dashboard": "Dashboard",
-  "sidebar.monitor": "Monitor",
-  "sidebar.system": "System",
-  "sidebar.system1": "System 1",
-  "sidebar.system2": "System 2",
-  "sidebar.system3": "System 3",
-  "sidebar.test1": "Test 1",
-  "sidebar.test2": "Test 2",
+	"sidebar.dashboard": "Dashboard",
+	"sidebar.monitor": "Monitor",
+	"sidebar.system": "System",
+	"sidebar.system1": "System 1",
+	"sidebar.system2": "System 2",
+	"sidebar.system3": "System 3",
+	"sidebar.test1": "Test 1",
+	"sidebar.test2": "Test 2",
 
-  "sidebar.test3": "Test 3",
-  "sidebar.test4": "Test 4",
-  "sidebar.test5": "Test 5",
-  "sidebar.test6": "Test 6",
-  "sidebar.test7": "Test 7",
-  "sidebar.test8": "Test 8",
+	"sidebar.test3": "Test 3",
+	"sidebar.test4": "Test 4",
+	"sidebar.test5": "Test 5",
+	"sidebar.test6": "Test 6",
+	"sidebar.test7": "Test 7",
+	"sidebar.test8": "Test 8",
 
-  "sidebar.test9": "Test 9",
-  "sidebar.test10": "Test 10",
-  "sidebar.test11": "Test 11",
-  "sidebar.test12": "Test 12",
+	"sidebar.test9": "Test 9",
+	"sidebar.test10": "Test 10",
+	"sidebar.test11": "Test 11",
+	"sidebar.test12": "Test 12",
 
-  "loading.text": "Please Wait. Loading...",
+	"loading.text": "Please Wait. Loading...",
 
-  "home.name": "This Is Home Page",
+	"home.name": "This Is Home Page",
 
-  "login.header": "Login Header",
-  "login.footer": "Login Footer",
-  "login.content": "Login Content",
+	"login.header": "Login Header",
+	"login.footer": "Login Footer",
+	"login.content": "Login Content",
 
-  "app.cart.items": "{count, plural, =0 {You have no items} one {You have one item} other {You have # items}} in your cart",
-  "app.item.price": "{price, number, ::currency/USD}"
+	"app.cart.items": "{count, plural, =0 {You have no items} one {You have one item} other {You have # items}} in your cart",
+	"app.item.price": "{price, number, ::currency/USD}"
 }

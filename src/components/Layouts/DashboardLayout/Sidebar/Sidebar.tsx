@@ -59,7 +59,7 @@ function Sidebar({
 			<button
 				type="button"
 				className={`bg-[rgb(var(--sidebar-header-background))] hover:bg-[--sidebar-header-background-hover-color] 
-          text-[--sidebar-header-text-color] w-full flex items-center justify-between py-3 px-3 pl-1 
+          text-[--sidebar-header-text-color] w-full flex items-center justify-between h-[2.6rem] pr-3 pl-1 
         text- duration-200`}
 				onClick={() => setValue("")}
 			>
