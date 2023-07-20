@@ -135,12 +135,12 @@ const Navbar = ({ toggleClick, isSidebarOpen }: { isSidebarOpen: boolean; toggle
 								<button
 									type="button"
 									className="hover:bg-[--navbar-dropdown_menu_item-background-hover-color] flex justify-center items-center p-2 text-sm"
-									onClick={() => changeTheme("mariner")}
+									onClick={() => changeTheme("blue")}
 								>
 									<div className="font-medium leading-[1.2] flex items-center justify-center">
 										{/* <Icon path={mdiMoonWaningCrescent} size={0.8} className="me-2" /> */}
 										{/* <FormattedMessage defaultMessage={"Dark"} id="header.dark-theme" /> */}
-										Mariner
+										Blue
 									</div>
 								</button>
 							</div>

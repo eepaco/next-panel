@@ -38,7 +38,13 @@ export default function ClientApp(props: { children: ReactNode }) {
 		import(`@/lang/${lang}.json`).then((messages) => {
 			setMessages(messages);
 		});
-	}, [lang]);
+
+		// Direction of widgets
+		const gridLayoutContainer = document.querySelector(".react-grid-layout");
+		const children = document.querySelectorAll(".react-grid-item");
+		gridLayoutContainer?.setAttribute("dir", "ltr");
+		children.forEach((child) => child.setAttribute("dir", dir));
+	}, [lang, dir]);
 
 	return (
 		<DirectionProvider dir={dir}>

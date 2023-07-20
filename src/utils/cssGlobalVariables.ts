@@ -108,8 +108,6 @@ export function getComputedCssGlobalColors(
 	const primaryColor = variables["primary-color"];
 	const secondaryColor = variables["secondary-color"];
 
-	console.log("fff", getContrastColor("#499258"));
-
 	return new TypedMergeable({
 		"body-background-color":
 			variables["body-background-color"] ?? adjustColorBrightness(secondaryColor, -6),
@@ -126,15 +124,18 @@ export function getComputedCssGlobalColors(
 			getContrastColor(obj["navbar-background-color"]),
 		"navbar-dropdown_menu-background-color":
 			variables["navbar-dropdown_menu-background-color"] ??
-			getContrastColor(obj["navbar-background-color"]),
+			(getContrastColor(obj["navbar-background-color"]) === "#ffffff" ? "#000000" : "#ffffff"),
 		"navbar-dropdown_menu_item-background-hover-color":
-			variables["navbar-dropdown_menu_item-background-hover-color"] ?? "#e7e7e7",
+			variables["navbar-dropdown_menu_item-background-hover-color"] ??
+			(getBrightness(obj["navbar-background-color"]) > 125
+				? adjustColorBrightness("#ffffff", -10)
+				: adjustColorBrightness("#1a1a1a", 50)),
 		"navbar-dropdown_menu-border-color":
 			variables["navbar-dropdown_menu-border-color"] ??
-			(getContrastColor(obj["navbar-background-color"]) === "#ffffff" ? "#000000" : "#ffffff"),
+			getContrastColor(obj["navbar-background-color"]),
 		"navbar-dropdown_menu_item-text-color":
 			variables["navbar-dropdown_menu_item-text-color"] ??
-			(getContrastColor(obj["navbar-background-color"]) === "#ffffff" ? "#000000" : "#ffffff"),
+			getContrastColor(obj["navbar-background-color"]),
 
 		"sidebar-header-background-color": variables["sidebar-header-background-color"] ?? "",
 		"sidebar-header-background-hover-color":
