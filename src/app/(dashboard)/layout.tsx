@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, ReactElement, useRef } from "react";
-import Navbar from "@/components/Layouts/DashboardLayout/Navbar";
+import Navbar from "@/components/Layouts/DashboardLayout/Navbar/Navbar";
 import Sidebar from "@/components/Layouts/DashboardLayout/Sidebar/Sidebar";
 import useHandleResizeTransition from "@/hooks/useHandleResizeTransition";
 
