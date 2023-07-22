@@ -22,11 +22,28 @@ import NavbarDropdownTriggerButton from "./NavbarDropdownTriggerButton";
 import NavbarItem from "./NavbarItem";
 import NavbarDropdownContent from "./NavbarDropdownContent";
 import NavbarDropdownItem from "./NavbarDropdownItem";
+import { useAppDispatch, useAppSelector } from "../../../../hooks/useRedux";
+import {
+	setIsSidebarHoverDisabled,
+	setIsSidebarOpen,
+} from "../../../../redux/UIConfig/UIConfigSlice";
 
-const Navbar = ({ toggleClick, isSidebarOpen }: { isSidebarOpen: boolean; toggleClick: any }) => {
+const Navbar = () => {
 	const headerRef = useRef<HTMLUListElement>(null);
+	const isSidebarOpen = useAppSelector((state) => state.uiConfig.isSidebarOpen);
+	const dispatch = useAppDispatch();
 
 	useHandleResizeTransition(headerRef.current, [isSidebarOpen]);
+
+	const menuClickHandler = () => {
+		if (isSidebarOpen) {
+			dispatch(setIsSidebarHoverDisabled(false));
+		} else {
+			dispatch(setIsSidebarHoverDisabled(true));
+		}
+
+		dispatch(setIsSidebarOpen(!isSidebarOpen));
+	};
 
 	return (
 		<NavigationMenu.Root
@@ -41,7 +58,7 @@ const Navbar = ({ toggleClick, isSidebarOpen }: { isSidebarOpen: boolean; toggle
           `}
 			>
 				<div id="navbar-start-container" className="flex space-x-2">
-					<NavbarItem onClick={toggleClick}>
+					<NavbarItem onClick={menuClickHandler}>
 						<Icon path={mdiMenu} size={0.8} />
 					</NavbarItem>
 

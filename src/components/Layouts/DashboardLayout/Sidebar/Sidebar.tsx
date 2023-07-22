@@ -10,32 +10,28 @@ import AccordionItem from "./AccordionItem";
 import AccordionContent from "./AccordionContent";
 import AccordionTrigger from "./AccordionTrigger";
 import AccordionRoot from "./AccordionRoot";
+import { useAppDispatch, useAppSelector } from "../../../../hooks/useRedux";
+import { setIsSidebarOpen } from "../../../../redux/UIConfig/UIConfigSlice";
 
-function Sidebar({
-	isSidebarOpen,
-	setIsSidebarOpen,
-	isSidebarHoverDisabled,
-}: {
-	isSidebarOpen: boolean;
-	setIsSidebarOpen: (state: boolean) => void;
-	isSidebarHoverDisabled: boolean;
-}) {
+function Sidebar() {
 	const [value, setValue] = useState<string>("");
 	const [subValue, setSubValue] = useState<string>("");
 	const sidebarRef = useRef<HTMLElement>(null);
 	const intl = useIntl();
+	const { isSidebarOpen, isSidebarHoverDisabled } = useAppSelector((state) => state.uiConfig);
+	const dispatch = useAppDispatch();
 
 	useHandleResizeTransition(sidebarRef.current, [isSidebarOpen]);
 
 	const handleSidebarMouseOver = () => {
 		if (!isSidebarHoverDisabled) {
-			setIsSidebarOpen(true);
+			dispatch(setIsSidebarOpen(true));
 		}
 	};
 
 	const handleSidebarMouseLeave = () => {
 		if (!isSidebarHoverDisabled) {
-			setIsSidebarOpen(false);
+			dispatch(setIsSidebarOpen(false));
 		}
 	};
 
