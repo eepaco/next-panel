@@ -8,8 +8,8 @@ import {
 	CssTailwindGlobalHexColors,
 	getComputedCssGlobalColors,
 	mapPropetiesToCss,
-} from "@/utils/cssGlobalVariables";
-import { themes } from "@/utils/changeTheme";
+} from "../utils/cssGlobalVariables";
+import { themes } from "../utils/changeTheme";
 
 export default function ClientApp(props: { children: ReactNode }) {
 	const { dir, lang } = useSelector((state: any) => state.uiConfig);
@@ -35,7 +35,7 @@ export default function ClientApp(props: { children: ReactNode }) {
 	});
 
 	useEffect(() => {
-		import(`@/lang/${lang}.json`).then((messages) => {
+		import(`../lang/${lang}.json`).then((messages) => {
 			setMessages(messages);
 		});
 

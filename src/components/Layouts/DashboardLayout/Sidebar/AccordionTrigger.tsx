@@ -3,7 +3,7 @@ import { mdiChevronRight } from "@mdi/js";
 import Icon from "@mdi/react";
 import * as Accordion from "@radix-ui/react-accordion";
 
-const AccordionTrigger = React.forwardRef(function x(
+const AccordionTrigger = React.forwardRef(function AccordionTriggerComponent(
 	{
 		children,
 		className,

@@ -2,13 +2,14 @@ import React, { memo, useEffect, useRef, useState } from "react";
 import * as Accordion from "@radix-ui/react-accordion";
 import Icon from "@mdi/react";
 import { mdiTriangleSmallDown, mdiWallFire, mdiCog } from "@mdi/js";
-import SidebarData from "@/data/SidebarData";
-import useHandleResizeTransition from "@/hooks/useHandleResizeTransition";
+import SidebarData from "../../../../data/SidebarData";
+import useHandleResizeTransition from "../../../../hooks/useHandleResizeTransition";
 import { useIntl } from "react-intl";
 import AccordionLink from "./AccordionLink";
 import AccordionItem from "./AccordionItem";
 import AccordionContent from "./AccordionContent";
 import AccordionTrigger from "./AccordionTrigger";
+import AccordionRoot from "./AccordionRoot";
 
 function Sidebar({
 	isSidebarOpen,
@@ -61,7 +62,6 @@ function Sidebar({
 				className={`bg-[rgb(var(--sidebar-header-background))] hover:bg-[--sidebar-header-background-hover-color] 
           text-[--sidebar-header-text-color] w-full flex items-center justify-between h-[2.6rem] pr-3 pl-1 
         text- duration-200`}
-				onClick={() => setValue("")}
 			>
 				<span className="flex items-center">
 					<Icon
@@ -80,13 +80,7 @@ function Sidebar({
 				<Icon path={mdiTriangleSmallDown} size={0.8} className={`${!isSidebarOpen && "hidden"}`} />
 			</button>
 
-			<Accordion.Root
-				className="w-full shadow-[0_2px_10px] shadow-black/5"
-				type="single"
-				collapsible
-				value={value}
-				onValueChange={setValue}
-			>
+			<AccordionRoot value={value} onValueChange={setValue}>
 				{SidebarData(intl).map((item, i) => (
 					<AccordionItem key={i} value={`item-${item.title}`} showTitle={isSidebarOpen}>
 						<AccordionTrigger icon={item.icon} isRoot showTitle={isSidebarOpen}>
@@ -97,13 +91,7 @@ function Sidebar({
 							<div className="pl-3">
 								{item.hasSubmenu &&
 									item.subMenuData.map((subMenu) => (
-										<Accordion.Root
-											type="single"
-											collapsible
-											key={subMenu.title}
-											value={subValue}
-											onValueChange={setSubValue}
-										>
+										<AccordionRoot key={subMenu.title} value={subValue} onValueChange={setSubValue}>
 											{subMenu.hasSubmenu ? (
 												<AccordionItem value={`subitem-${subMenu.title}`} showTitle={isSidebarOpen}>
 													<Accordion.Header>
@@ -122,13 +110,13 @@ function Sidebar({
 											) : (
 												<AccordionLink href={subMenu.href}>{subMenu.title}</AccordionLink>
 											)}
-										</Accordion.Root>
+										</AccordionRoot>
 									))}
 							</div>
 						</AccordionContent>
 					</AccordionItem>
 				))}
-			</Accordion.Root>
+			</AccordionRoot>
 		</aside>
 	);
 }
