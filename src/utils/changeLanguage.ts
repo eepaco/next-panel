@@ -1,5 +1,5 @@
-import store from "@/redux/configureStore";
-import { uiConfigSlice } from "@/redux/UIConfig/UIConfigSlice";
+import store from "../redux/configureStore";
+import { uiConfigSlice } from "../redux/UIConfig/UIConfigSlice";
 
 type TDirections = "ltr" | "rtl";
 

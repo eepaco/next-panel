@@ -1,16 +1,16 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import AccordionLink from "./AccordionLink";
+import AccordionLinkComp from "./AccordionLink";
 
-const meta: Meta<typeof AccordionLink> = {
-	title: "Sidebar/Accordion Link",
-	component: AccordionLink,
+const meta: Meta<typeof AccordionLinkComp> = {
+	title: "Sidebar",
+	component: AccordionLinkComp,
 	decorators: [(story) => <aside className="w-64">{story()}</aside>],
 };
 export default meta;
 
-type Story = StoryObj<typeof AccordionLink>;
+type Story = StoryObj<typeof AccordionLinkComp>;
 
-export const Link: Story = {
+export const AccordionLink: Story = {
 	args: {
 		href: "/analyze",
 		children: "Analyze",

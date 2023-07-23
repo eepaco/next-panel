@@ -15,7 +15,7 @@ import {
 	mdiLogout,
 } from "@mdi/js";
 import { changeLanguage } from "../../../../utils/changeLanguage";
-import useHandleResizeTransition from "@/hooks/useHandleResizeTransition";
+import useHandleResizeTransition from "../../../../hooks/useHandleResizeTransition";
 import { FormattedMessage } from "react-intl";
 import { changeTheme } from "../../../../utils/changeTheme";
 import NavbarDropdownTriggerButton from "./NavbarDropdownTriggerButton";
@@ -88,21 +88,19 @@ const Navbar = () => {
 						</NavbarDropdownTriggerButton>
 						<NavbarDropdownContent>
 							<NavbarDropdownItem onClick={() => changeTheme("light")}>
-								<div className="font-medium leading-[1.2] flex items-center justify-center">
+								<div className="flex items-center justify-center">
 									<Icon path={mdiWhiteBalanceSunny} size={0.8} className="me-2" />
 									<FormattedMessage defaultMessage={"Light"} id="header.light-theme" />
 								</div>
 							</NavbarDropdownItem>
 							<NavbarDropdownItem onClick={() => changeTheme("dark")}>
-								<div className="font-medium leading-[1.2] flex items-center justify-center">
+								<div className="flex items-center justify-center">
 									<Icon path={mdiMoonWaningCrescent} size={0.8} className="me-2" />
 									<FormattedMessage defaultMessage={"Dark"} id="header.dark-theme" />
 								</div>
 							</NavbarDropdownItem>
 							<NavbarDropdownItem onClick={() => changeTheme("blue")}>
-								<div className="font-medium leading-[1.2] flex items-center justify-center">
-									Blue
-								</div>
+								<div className="flex items-center justify-center">Blue</div>
 							</NavbarDropdownItem>
 						</NavbarDropdownContent>
 					</NavigationMenu.Item>
@@ -153,7 +151,7 @@ const Navbar = () => {
 				</NavigationMenu.Indicator>
 			</NavigationMenu.List>
 
-			<div className="absolute top-full start-0 flex w-full justify-end">
+			<div className="perspective-[2000px] absolute top-full start-0 flex w-full justify-end">
 				<NavigationMenu.Viewport
 					className="bg-[--navbar-dropdown_menu-background-color] border border-[--navbar-dropdown_menu-border-color]
 						data-[state=open]:animate-[--scaleIn] 

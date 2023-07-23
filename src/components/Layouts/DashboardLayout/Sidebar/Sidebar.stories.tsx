@@ -10,8 +10,5 @@ export default meta;
 type Story = StoryObj<typeof Sidebar>;
 
 export const Aside: Story = {
-	args: {
-		isSidebarOpen: true,
-		isSidebarHoverDisabled: true,
-	},
+	args: {},
 };
