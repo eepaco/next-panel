@@ -1,12 +1,12 @@
 "use client";
 
-import DragableAndResizable from "@/components/DragableAndResizable/DragableAndResizable";
-import DragableAndResizableContainer from "@/components/DragableAndResizable/DragableAndResizableContainer";
+import Widget from "@/components/Widget/Widget";
+import WidgetContainer from "@/components/Widget/WidgetContainer";
 import _ from "lodash";
 import { useState } from "react";
 import { Layout } from "react-grid-layout";
 
-const initialLayout = {
+const initialLayouts = {
 	lg: [
 		{ i: "Item 1", x: 0, y: 0, w: 1, h: 2.5 },
 		{
@@ -23,7 +23,7 @@ const initialLayout = {
 };
 
 export default function Home() {
-	const [layouts, setLayouts] = useState<{ lg: any }>(initialLayout);
+	const [layouts, setLayouts] = useState<{ lg: any }>(initialLayouts);
 
 	const onRemoveItem = (i: any) => {
 		console.log("removing", i);
@@ -32,13 +32,13 @@ export default function Home() {
 
 	return (
 		<>
-			<DragableAndResizableContainer layouts={layouts}>
+			<WidgetContainer layouts={layouts}>
 				{layouts.lg.map((layoutItem: Layout) => (
-					<DragableAndResizable title={layoutItem.i} key={layoutItem.i} onRemoveItem={onRemoveItem}>
+					<Widget title={layoutItem.i} key={layoutItem.i} onRemoveItem={onRemoveItem}>
 						MY FAKE CONTENT HERE
-					</DragableAndResizable>
+					</Widget>
 				))}
-			</DragableAndResizableContainer>
+			</WidgetContainer>
 		</>
 	);
 }

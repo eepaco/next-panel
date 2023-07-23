@@ -4,6 +4,8 @@ import ClientApp from "../src/components/ClientApp";
 import { Provider } from "react-redux";
 import "../src/app/globals.css";
 import store from "../src/redux/configureStore";
+import "react-grid-layout/css/styles.css";
+import "react-resizable/css/styles.css";
 
 const preview: Preview = {
 	parameters: {
