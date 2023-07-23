@@ -1,7 +1,7 @@
 import React, { ReactNode } from "react";
 import * as Accordion from "@radix-ui/react-accordion";
 
-const AccordionContent = React.forwardRef(function x(
+const AccordionContent = React.forwardRef(function AccordionContentComponent(
 	{
 		children,
 		className,

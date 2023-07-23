@@ -2,39 +2,36 @@ import React, { memo, useEffect, useRef, useState } from "react";
 import * as Accordion from "@radix-ui/react-accordion";
 import Icon from "@mdi/react";
 import { mdiTriangleSmallDown, mdiWallFire, mdiCog } from "@mdi/js";
-import SidebarData from "@/data/SidebarData";
-import useHandleResizeTransition from "@/hooks/useHandleResizeTransition";
+import SidebarData from "../../../../data/SidebarData";
+import useHandleResizeTransition from "../../../../hooks/useHandleResizeTransition";
 import { useIntl } from "react-intl";
 import AccordionLink from "./AccordionLink";
 import AccordionItem from "./AccordionItem";
 import AccordionContent from "./AccordionContent";
 import AccordionTrigger from "./AccordionTrigger";
+import AccordionRoot from "./AccordionRoot";
+import { useAppDispatch, useAppSelector } from "../../../../hooks/useRedux";
+import { setIsSidebarOpen } from "../../../../redux/UIConfig/UIConfigSlice";
 
-function Sidebar({
-	isSidebarOpen,
-	setIsSidebarOpen,
-	isSidebarHoverDisabled,
-}: {
-	isSidebarOpen: boolean;
-	setIsSidebarOpen: (state: boolean) => void;
-	isSidebarHoverDisabled: boolean;
-}) {
+function Sidebar() {
 	const [value, setValue] = useState<string>("");
 	const [subValue, setSubValue] = useState<string>("");
 	const sidebarRef = useRef<HTMLElement>(null);
 	const intl = useIntl();
+	const { isSidebarOpen, isSidebarHoverDisabled } = useAppSelector((state) => state.uiConfig);
+	const dispatch = useAppDispatch();
 
 	useHandleResizeTransition(sidebarRef.current, [isSidebarOpen]);
 
 	const handleSidebarMouseOver = () => {
 		if (!isSidebarHoverDisabled) {
-			setIsSidebarOpen(true);
+			dispatch(setIsSidebarOpen(true));
 		}
 	};
 
 	const handleSidebarMouseLeave = () => {
 		if (!isSidebarHoverDisabled) {
-			setIsSidebarOpen(false);
+			dispatch(setIsSidebarOpen(false));
 		}
 	};
 
@@ -59,9 +56,8 @@ function Sidebar({
 			<button
 				type="button"
 				className={`bg-[rgb(var(--sidebar-header-background))] hover:bg-[--sidebar-header-background-hover-color] 
-          text-[--sidebar-header-text-color] w-full flex items-center justify-between py-3 px-3 pl-1 
+          text-[--sidebar-header-text-color] w-full flex items-center justify-between h-[2.6rem] pr-3 pl-1 
         text- duration-200`}
-				onClick={() => setValue("")}
 			>
 				<span className="flex items-center">
 					<Icon
@@ -80,13 +76,7 @@ function Sidebar({
 				<Icon path={mdiTriangleSmallDown} size={0.8} className={`${!isSidebarOpen && "hidden"}`} />
 			</button>
 
-			<Accordion.Root
-				className="w-full shadow-[0_2px_10px] shadow-black/5"
-				type="single"
-				collapsible
-				value={value}
-				onValueChange={setValue}
-			>
+			<AccordionRoot value={value} onValueChange={setValue}>
 				{SidebarData(intl).map((item, i) => (
 					<AccordionItem key={i} value={`item-${item.title}`} showTitle={isSidebarOpen}>
 						<AccordionTrigger icon={item.icon} isRoot showTitle={isSidebarOpen}>
@@ -97,13 +87,7 @@ function Sidebar({
 							<div className="pl-3">
 								{item.hasSubmenu &&
 									item.subMenuData.map((subMenu) => (
-										<Accordion.Root
-											type="single"
-											collapsible
-											key={subMenu.title}
-											value={subValue}
-											onValueChange={setSubValue}
-										>
+										<AccordionRoot key={subMenu.title} value={subValue} onValueChange={setSubValue}>
 											{subMenu.hasSubmenu ? (
 												<AccordionItem value={`subitem-${subMenu.title}`} showTitle={isSidebarOpen}>
 													<Accordion.Header>
@@ -122,13 +106,13 @@ function Sidebar({
 											) : (
 												<AccordionLink href={subMenu.href}>{subMenu.title}</AccordionLink>
 											)}
-										</Accordion.Root>
+										</AccordionRoot>
 									))}
 							</div>
 						</AccordionContent>
 					</AccordionItem>
 				))}
-			</Accordion.Root>
+			</AccordionRoot>
 		</aside>
 	);
 }

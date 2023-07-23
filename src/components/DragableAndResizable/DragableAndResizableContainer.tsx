@@ -10,8 +10,8 @@ export default function DragableAndResizableContainer(props: {
 	const handleLayoutChange = (currentLayout: Layout[], allLayouts: Layouts): void => {
 		console.log("LAYOUT CHANGED!!");
 
-		// console.log(currentLayout);
-		// console.log(allLayouts);
+		// console.log("Cur ", currentLayout);
+		// console.log("All ", allLayouts);
 
 		// localStorage.setItem("grid-layout", JSON.stringify(layouts));
 	};
@@ -29,6 +29,7 @@ export default function DragableAndResizableContainer(props: {
 				isBounded={true}
 				margin={{ lg: [10, 10] }}
 				containerPadding={{ lg: [0, 0] }}
+				// className="bg-[red]"
 				// resizeHandle={(handleAxis: ResizeHandleAxis, ref: React.Ref<HTMLDivElement>) => (
 				// 	<MyHandle ref={ref} handleAxis={handleAxis} />
 				// )}

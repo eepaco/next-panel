@@ -124,15 +124,18 @@ export function getComputedCssGlobalColors(
 			getContrastColor(obj["navbar-background-color"]),
 		"navbar-dropdown_menu-background-color":
 			variables["navbar-dropdown_menu-background-color"] ??
-			getContrastColor(obj["navbar-background-color"]),
+			(getContrastColor(obj["navbar-background-color"]) === "#ffffff" ? "#000000" : "#ffffff"),
 		"navbar-dropdown_menu_item-background-hover-color":
-			variables["navbar-dropdown_menu_item-background-hover-color"] ?? "#e7e7e7",
+			variables["navbar-dropdown_menu_item-background-hover-color"] ??
+			(getBrightness(obj["navbar-background-color"]) > 125
+				? adjustColorBrightness("#ffffff", -10)
+				: adjustColorBrightness("#1a1a1a", 50)),
 		"navbar-dropdown_menu-border-color":
 			variables["navbar-dropdown_menu-border-color"] ??
-			(getContrastColor(obj["navbar-background-color"]) === "#ffffff" ? "#000000" : "#ffffff"),
+			getContrastColor(obj["navbar-background-color"]),
 		"navbar-dropdown_menu_item-text-color":
 			variables["navbar-dropdown_menu_item-text-color"] ??
-			(getContrastColor(obj["navbar-background-color"]) === "#ffffff" ? "#000000" : "#ffffff"),
+			getContrastColor(obj["navbar-background-color"]),
 
 		"sidebar-header-background-color": variables["sidebar-header-background-color"] ?? "",
 		"sidebar-header-background-hover-color":
@@ -158,13 +161,19 @@ export function getComputedCssGlobalColors(
 			variables["sidebar-item-text-color"] ?? getContrastColor(obj["sidebar-background-color"]),
 		"sidebar-item-background-active-color":
 			variables["sidebar-item-background-active-color"] ??
-			adjustColorBrightness(obj["sidebar-background-color"], -8),
+			getBrightness(obj["sidebar-background-color"]) > 125
+				? adjustColorBrightness(obj["sidebar-background-color"], -8)
+				: adjustColorBrightness(obj["sidebar-background-color"], 8),
 		"sidebar-item-background-hover-color":
 			variables["sidebar-item-background-hover-color"] ??
-			adjustColorBrightness(obj["sidebar-background-color"], -6),
+			getBrightness(obj["sidebar-background-color"]) > 125
+				? adjustColorBrightness(obj["sidebar-background-color"], -6)
+				: adjustColorBrightness(obj["sidebar-background-color"], 6),
 		"sidebar-content-background-active-color":
 			variables["sidebar-content-background-active-color"] ??
-			adjustColorBrightness(obj["sidebar-background-color"], -4),
+			getBrightness(obj["sidebar-background-color"]) > 125
+				? adjustColorBrightness(obj["sidebar-background-color"], -4)
+				: adjustColorBrightness(obj["sidebar-background-color"], 4),
 
 		"widget-background-color":
 			variables["widget-background-color"] ??
@@ -241,12 +250,19 @@ function rgbToHex(r: number, g: number, b: number): string {
 	return `#${hexR}${hexG}${hexB}`;
 }
 
-// https://stackoverflow.com/a/11868159
-function getContrastColor(hexColor: string): string {
+function getBrightness(hexColor: string): number {
 	const rgb = hexToRgb(hexColor)!;
 
 	// http://www.w3.org/TR/AERT#color-contrast
 	const brightness = Math.round((rgb.r * 299 + rgb.g * 587 + rgb.b * 114) / 1000);
+
+	return brightness;
+}
+
+// https://stackoverflow.com/a/11868159
+function getContrastColor(hexColor: string): string {
+	const brightness = getBrightness(hexColor);
+
 	return brightness > 125 ? "#000000" : "#ffffff";
 }
 
@@ -267,7 +283,3 @@ function adjustColorBrightness(hexColor: string, percent: number): string {
 
 	return adjustedHexColor;
 }
-
-const originalColor = "#696969";
-const brighterColor = adjustColorBrightness(originalColor, 20); // 20% brighter
-const darkerColor = adjustColorBrightness(originalColor, -20); // 20% darker

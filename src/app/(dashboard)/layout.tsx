@@ -1,35 +1,21 @@
 "use client";
 
-import React, { useState, ReactElement, useRef } from "react";
-import Navbar from "@/components/Layouts/DashboardLayout/Navbar";
+import React, { ReactElement, useRef } from "react";
+import Navbar from "@/components/Layouts/DashboardLayout/Navbar/Navbar";
 import Sidebar from "@/components/Layouts/DashboardLayout/Sidebar/Sidebar";
 import useHandleResizeTransition from "@/hooks/useHandleResizeTransition";
+import { useAppSelector } from "@/hooks/useRedux";
 
 export default function DashboardLayout(props: { children: ReactElement | ReactElement[] }) {
-	const [isSidebarOpen, setIsSidebarOpen] = useState(true);
-	const [isSidebarHoverDisabled, setIsSidebarHoverDisabled] = useState(true);
+	const { isSidebarOpen, isSidebarHoverDisabled } = useAppSelector((state) => state.uiConfig);
 	const contentRef = useRef<HTMLDivElement>(null);
 
 	useHandleResizeTransition(contentRef.current, [isSidebarOpen]);
 
-	const toggleClick = () => {
-		if (isSidebarOpen) {
-			setIsSidebarHoverDisabled(false);
-		} else {
-			setIsSidebarHoverDisabled(true);
-		}
-
-		setIsSidebarOpen(!isSidebarOpen);
-	};
-
 	return (
 		<>
-			<Navbar isSidebarOpen={isSidebarOpen} toggleClick={toggleClick} />
-			<Sidebar
-				isSidebarOpen={isSidebarOpen}
-				setIsSidebarOpen={setIsSidebarOpen}
-				isSidebarHoverDisabled={isSidebarHoverDisabled}
-			/>
+			<Navbar />
+			<Sidebar />
 			<div className={`flex justify-end w-full`}>
 				<div
 					className={`w-full mt-[2.6rem] ease-in ${

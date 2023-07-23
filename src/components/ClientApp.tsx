@@ -8,8 +8,8 @@ import {
 	CssTailwindGlobalHexColors,
 	getComputedCssGlobalColors,
 	mapPropetiesToCss,
-} from "@/utils/cssGlobalVariables";
-import { themes } from "@/utils/changeTheme";
+} from "../utils/cssGlobalVariables";
+import { themes } from "../utils/changeTheme";
 
 export default function ClientApp(props: { children: ReactNode }) {
 	const { dir, lang } = useSelector((state: any) => state.uiConfig);
@@ -35,10 +35,16 @@ export default function ClientApp(props: { children: ReactNode }) {
 	});
 
 	useEffect(() => {
-		import(`@/lang/${lang}.json`).then((messages) => {
+		import(`../lang/${lang}.json`).then((messages) => {
 			setMessages(messages);
 		});
-	}, [lang]);
+
+		// Direction of widgets
+		const gridLayoutContainer = document.querySelector(".react-grid-layout");
+		const children = document.querySelectorAll(".react-grid-item");
+		gridLayoutContainer?.setAttribute("dir", "ltr");
+		children.forEach((child) => child.setAttribute("dir", dir));
+	}, [lang, dir]);
 
 	return (
 		<DirectionProvider dir={dir}>
