@@ -3,7 +3,7 @@ import { mdiDotsVertical, mdiMenuDown } from "@mdi/js";
 import { forwardRef, ReactNode } from "react";
 import OptionsDropdown from "./OptionsDropdown";
 
-function DragableAndResizable(
+function Widget(
 	props: {
 		children: ReactNode;
 		title: string;
@@ -46,4 +46,4 @@ function DragableAndResizable(
 	);
 }
 
-export default forwardRef(DragableAndResizable);
+export default forwardRef(Widget);
