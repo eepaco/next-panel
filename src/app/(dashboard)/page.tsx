@@ -1,5 +1,6 @@
 "use client";
 
+import DoughnutChart from "@/components/charts/DoughnutChart";
 import LineChart from "@/components/charts/LineChart";
 import Widget from "@/components/Widget/Widget";
 import WidgetContainer from "@/components/Widget/WidgetContainer";
@@ -12,13 +13,13 @@ const initialLayouts = {
 		{ i: "Item 1", x: 0, y: 0, w: 2, h: 3 },
 		{
 			i: "Item 2",
-			x: 1,
-			y: 1,
-			w: 1,
-			h: 2.5,
+			x: 2,
+			y: 0,
+			w: 2,
+			h: 3,
 		},
-		{ i: "Item 3", x: 2, y: 0, w: 1, h: 2 },
-		{ i: "Item 4", x: 3, y: 0, w: 1, h: 1 },
+		{ i: "Item 3", x: 1, y: 1, w: 1, h: 2.5 },
+		{ i: "Item 4", x: 0, y: 2, w: 1, h: 1 },
 		{ i: "Item 5", x: 2, y: 1, w: 1, h: 1.5 },
 	],
 };
@@ -64,6 +65,32 @@ export default function Home() {
 						xAxesSuffix="x"
 						yAxesSuffix="K"
 						stat={{ title: "Usage", value: 7 }}
+					/>
+				</Widget>
+
+				<Widget title="Doughnut Chart" key={"Item 2"}>
+					<DoughnutChart
+						data={{
+							labels: ["Label 1", "Label 2", "Label 3", "Label 4"],
+							datasets: [
+								{
+									data: [12, 19, 3, 5],
+									backgroundColor: [
+										"rgba(75, 192, 192, 0.6)",
+										"rgba(255, 206, 86, 0.6)",
+										"rgba(54, 162, 235, 0.6)",
+										"rgba(255, 99, 132, 0.6)",
+									],
+									borderColor: [
+										"rgba(75, 192, 192, 1)",
+										"rgba(255, 206, 86, 1)",
+										"rgba(54, 162, 235, 1)",
+										"rgba(255, 99, 132, 1)",
+									],
+									borderWidth: 1,
+								},
+							],
+						}}
 					/>
 				</Widget>
 
