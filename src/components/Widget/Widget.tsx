@@ -39,8 +39,8 @@ function Widget(
 				</OptionsDropdown>
 			</header>
 
-			<div className="min-h-[15rem] max-h-[15rem] overflow-auto p-2 pt-0 text-[--widget-content-color]">
-				<div className="cursor-pointer p-2 hover:bg-gray-100">{props.children}</div>
+			<div className="min-h-[15rem] mx-h-[15rem] overflow-auto p-2 pt-0 text-[--widget-content-color]">
+				<div className="cursor-pointer p-2 hover:bg-ray-100">{props.children}</div>
 			</div>
 		</div>
 	);
