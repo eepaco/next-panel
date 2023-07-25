@@ -35,7 +35,7 @@ function LineChart(props: LineChartProps) {
 					callback: function (value: any, index: any, values: any) {
 						return value + (props.yAxesSuffix ? props.yAxesSuffix : "");
 					},
-					color: "gray",
+					color: "#434343",
 				},
 			},
 			x: {
@@ -43,7 +43,7 @@ function LineChart(props: LineChartProps) {
 					// callback: function (value: any, index: any, values: any) {
 					// 	return value + (props.xAxesSuffix ? props.xAxesSuffix : "");
 					// },
-					color: "gray",
+					color: "#434343",
 				},
 			},
 		},
@@ -76,8 +76,10 @@ function LineChart(props: LineChartProps) {
 
 			{props.stat && (
 				<div className="flex items-center justify-center gap-2 mt-4">
-					<span className="text-gray-400">{props.stat.title}</span>
-					<span className="font-bold text-black text-xl	">{props.stat.value}</span>
+					<span className="text-[--linechart-stat_title-text-color]">{props.stat.title}</span>
+					<span className="font-bold text-[--linechart-stat_value-text-color] text-xl	">
+						{props.stat.value}
+					</span>
 				</div>
 			)}
 		</>

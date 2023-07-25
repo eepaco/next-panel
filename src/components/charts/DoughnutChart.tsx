@@ -19,7 +19,7 @@ const options = {
 		legend: {
 			position: legendPosition,
 			labels: {
-				color: "gray",
+				color: "#434343",
 			},
 		},
 	},
