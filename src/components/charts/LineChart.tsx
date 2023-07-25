@@ -35,7 +35,7 @@ function LineChart(props: LineChartProps) {
 					callback: function (value: any, index: any, values: any) {
 						return value + (props.yAxesSuffix ? props.yAxesSuffix : "");
 					},
-					color: "#434343",
+					color: "#8c8c8c",
 				},
 			},
 			x: {
@@ -43,7 +43,7 @@ function LineChart(props: LineChartProps) {
 					// callback: function (value: any, index: any, values: any) {
 					// 	return value + (props.xAxesSuffix ? props.xAxesSuffix : "");
 					// },
-					color: "#434343",
+					color: "#8c8c8c",
 				},
 			},
 		},

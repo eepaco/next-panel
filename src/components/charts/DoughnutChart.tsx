@@ -19,8 +19,13 @@ const options = {
 		legend: {
 			position: legendPosition,
 			labels: {
-				color: "#434343",
+				color: "#8c8c8c",
 			},
+		},
+	},
+	elements: {
+		arc: {
+			borderWidth: 1,
 		},
 	},
 };

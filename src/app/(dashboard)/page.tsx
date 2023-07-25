@@ -87,7 +87,6 @@ export default function Home() {
 										"rgba(54, 162, 235, 1)",
 										"rgba(255, 99, 132, 1)",
 									],
-									borderWidth: 1,
 								},
 							],
 						}}

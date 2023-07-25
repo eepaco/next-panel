@@ -215,7 +215,7 @@ export function getComputedCssGlobalColors(
 		"linechart-stat_value-text-color":
 			variables["linechart-stat_value-text-color"] ??
 			getContrastColor(obj["body-background-color"]),
-		"chart-label-text-color": variables["chart-label-text-color"] ?? "#434343",
+		"chart-label-text-color": variables["chart-label-text-color"] ?? "#8c8c8c",
 	})).value;
 }
 
