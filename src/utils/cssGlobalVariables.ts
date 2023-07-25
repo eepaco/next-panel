@@ -55,6 +55,12 @@ type CssWidgetGlobalHexColors = {
 	"widget-dropdown_menu-text-active-color": string;
 };
 
+type CssChartGlobalHexColors = {
+	"linechart-stat_title-text-color": string;
+	"linechart-stat_value-text-color": string;
+	"chart-label-text-color": string;
+};
+
 type CssAlertGlobalHexColors = {
 	"alert-warning-background-color": string;
 	"alert-warning-text-color": string;
@@ -99,12 +105,14 @@ export function getComputedCssGlobalColors(
 			CssBodyGlobalHexColors &
 				CssNavbarGlobalHexColors &
 				CssSidebarGlobalHexColors &
-				CssWidgetGlobalHexColors
+				CssWidgetGlobalHexColors &
+				CssChartGlobalHexColors
 		>
 ): CssBodyGlobalHexColors &
 	CssNavbarGlobalHexColors &
 	CssSidebarGlobalHexColors &
-	CssWidgetGlobalHexColors {
+	CssWidgetGlobalHexColors &
+	CssChartGlobalHexColors {
 	const primaryColor = variables["primary-color"];
 	const secondaryColor = variables["secondary-color"];
 
@@ -203,6 +211,11 @@ export function getComputedCssGlobalColors(
 		"widget-dropdown_menu-text-active-color":
 			variables["widget-dropdown_menu-text-active-color"] ??
 			(getContrastColor(obj["body-background-color"]) === "#ffffff" ? "#000000" : "#ffffff"),
+		"linechart-stat_title-text-color": variables["linechart-stat_title-text-color"] ?? "#aaaaaa",
+		"linechart-stat_value-text-color":
+			variables["linechart-stat_value-text-color"] ??
+			getContrastColor(obj["body-background-color"]),
+		"chart-label-text-color": variables["chart-label-text-color"] ?? "#8c8c8c",
 	})).value;
 }
 
@@ -211,7 +224,8 @@ export function mapPropetiesToCss(
 	colors: CssBodyGlobalHexColors &
 		CssNavbarGlobalHexColors &
 		CssSidebarGlobalHexColors &
-		CssWidgetGlobalHexColors
+		CssWidgetGlobalHexColors &
+		CssChartGlobalHexColors
 ) {
 	const result = [];
 	result.push(
