@@ -7,6 +7,8 @@ import WidgetContainer from "@/components/Widget/WidgetContainer";
 import _ from "lodash";
 import { useState } from "react";
 import { Layout } from "react-grid-layout";
+import Toast from "@/components/toast/Toast";
+import { toast } from "react-toastify";
 
 const initialLayouts = {
 	lg: [
@@ -34,6 +36,8 @@ export default function Home() {
 
 	return (
 		<>
+			<Toast />
+
 			<WidgetContainer layouts={layouts}>
 				<Widget title="Line Chart" key={"Item 1"}>
 					<LineChart
@@ -95,7 +99,14 @@ export default function Home() {
 
 				{layouts.lg.slice(2).map((layoutItem: Layout) => (
 					<Widget title={layoutItem.i} key={layoutItem.i} onRemoveItem={onRemoveItem}>
-						My fake content here
+						<button
+							onClick={() => {
+								toast.success("hello there");
+							}}
+							className="p-2 rounded-md bg-blue-500 text-white"
+						>
+							Show toast
+						</button>
 					</Widget>
 				))}
 			</WidgetContainer>
