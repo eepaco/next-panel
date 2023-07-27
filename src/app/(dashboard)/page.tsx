@@ -7,6 +7,10 @@ import WidgetContainer from "@/components/Widget/WidgetContainer";
 import _ from "lodash";
 import { useState } from "react";
 import { Layout } from "react-grid-layout";
+import Toast from "@/components/toast/Toast";
+import { toast } from "react-toastify";
+import useSWR from "swr";
+import { Api } from "@/api/Api";
 
 const initialLayouts = {
 	lg: [
@@ -27,6 +31,16 @@ const initialLayouts = {
 export default function Home() {
 	const [layouts, setLayouts] = useState<{ lg: any }>(initialLayouts);
 
+	const { mutate, data, isLoading, error } = useSWR(
+		"MY_KEY",
+		// .onNot200(() => {})
+		Api.getCards().enq()
+	);
+
+	console.log("data", data);
+	console.log("isLoading", isLoading);
+	console.log("error", error);
+
 	const onRemoveItem = (i: any) => {
 		console.log("removing", i);
 		setLayouts({ lg: _.reject(layouts.lg, { i: i }) });
@@ -34,6 +48,8 @@ export default function Home() {
 
 	return (
 		<>
+			<Toast />
+
 			<WidgetContainer layouts={layouts}>
 				<Widget title="Line Chart" key={"Item 1"}>
 					<LineChart
@@ -95,7 +111,15 @@ export default function Home() {
 
 				{layouts.lg.slice(2).map((layoutItem: Layout) => (
 					<Widget title={layoutItem.i} key={layoutItem.i} onRemoveItem={onRemoveItem}>
-						My fake content here
+						{isLoading && <p>Loading some pokemon cards for test...</p>}
+						<button
+							onClick={() => {
+								toast.success("hello there");
+							}}
+							className="p-2 rounded-md bg-blue-500 text-white"
+						>
+							Show toast
+						</button>
 					</Widget>
 				))}
 			</WidgetContainer>

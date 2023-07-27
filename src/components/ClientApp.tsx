@@ -2,7 +2,7 @@
 
 import { ReactNode, useEffect, useInsertionEffect, useState } from "react";
 import { DirectionProvider } from "@radix-ui/react-direction";
-import { useSelector } from "react-redux";
+import { useAppSelector } from "@/hooks/useRedux";
 import { IntlProvider } from "react-intl";
 import {
 	CssTailwindGlobalHexColors,
@@ -12,7 +12,7 @@ import {
 import { themes } from "../utils/changeTheme";
 
 export default function ClientApp(props: { children: ReactNode }) {
-	const { dir, lang } = useSelector((state: any) => state.uiConfig);
+	const { dir, lang } = useAppSelector((state) => state.uiConfig);
 	const [messages, setMessages] = useState({});
 
 	useInsertionEffect(() => {

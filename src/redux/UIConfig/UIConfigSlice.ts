@@ -1,7 +1,8 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { Direction } from "@radix-ui/react-direction";
 
 interface UIConfigState {
-	dir: string;
+	dir: Direction;
 	lang: string;
 	theme: string;
 	isSidebarOpen: boolean;
@@ -20,7 +21,7 @@ export const uiConfigSlice = createSlice({
 	name: "uiConfig",
 	initialState,
 	reducers: {
-		setDir: (state, action: PayloadAction<string>) => {
+		setDir: (state, action: PayloadAction<Direction>) => {
 			state.dir = action.payload;
 		},
 		setLang: (state, action: PayloadAction<string>) => {
