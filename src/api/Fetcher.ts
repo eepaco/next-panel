@@ -30,13 +30,12 @@ export class Fetcher<R, ErrorR = CommonResponse> {
 	async enq(): Promise<R> {
 		const response = await fetch(this.input, this.init);
 		const jsonBody = await response.json();
-		console.log("here", jsonBody);
 
-		if (!_.isEmpty(jsonBody)) {
+		if (!_.isEmpty((jsonBody as CommonResponse)?.toast)) {
 			if (response.ok) {
-				toast.success("data Success");
+				toast.success((jsonBody as CommonResponse).toast);
 			} else {
-				toast.error("ERROR");
+				toast.error((jsonBody as CommonResponse).toast);
 			}
 		}
 

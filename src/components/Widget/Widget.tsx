@@ -8,7 +8,7 @@ function Widget(
 		children: ReactNode;
 		title: string;
 		className?: string;
-		key?: string;
+		key: string;
 		style?: any;
 		grid?: any;
 		onRemoveItem?: any;
@@ -17,13 +17,10 @@ function Widget(
 ) {
 	return (
 		<div
-			{...props}
-			className={`bg-[--widget-background-color] border border-[--widget-border-color] widget-number ${
-				props.className || ""
-			}`}
-			// ref={moduleRef}
+			// {...props}
+			className={`bg-[--widget-background-color] border border-[--widget-border-color] widget-number ${props.className}`}
+			style={props.style}
 			key={props.key}
-			// style={props.style}
 			data-grid={props.grid}
 			ref={ref}
 			title=""
