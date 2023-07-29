@@ -31,13 +31,12 @@ const initialLayouts = {
 export default function Home() {
 	const [layouts, setLayouts] = useState<{ lg: any }>(initialLayouts);
 
-	const { mutate, data, isLoading, error } = useSWR(
-		"MY_KEY",
+	const { mutate, data, isLoading, error } = useSWR("MY_KEY", () =>
 		// .onNot200(() => {})
 		Api.getCards().enq()
 	);
 
-	console.log("data", data);
+	console.log("data", data?.results);
 	console.log("isLoading", isLoading);
 	console.log("error", error);
 
