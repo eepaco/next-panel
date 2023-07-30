@@ -18,7 +18,7 @@ export default function GridLayout(props: { children: ReactNode; layouts: Layout
 			<ResponsiveGridLayout
 				layouts={props.layouts}
 				breakpoints={{ lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0 }}
-				cols={{ lg: 4, md: 3, sm: 2, xs: 1, xxs: 1 }}
+				cols={{ lg: 4, md: 4, sm: 3, xs: 1, xxs: 1 }}
 				rowHeight={100}
 				width={1200}
 				onLayoutChange={handleLayoutChange}

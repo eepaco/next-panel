@@ -1,6 +1,6 @@
 import Icon from "@mdi/react";
 import { mdiDotsVertical, mdiMenuDown } from "@mdi/js";
-import { CSSProperties, forwardRef, ReactNode, Ref } from "react";
+import { CSSProperties, forwardRef, ReactNode, Ref, RefObject, useEffect } from "react";
 import OptionsDropdown from "./OptionsDropdown";
 
 type WidgetProps = {
@@ -13,12 +13,23 @@ type WidgetProps = {
 
 const Widget = forwardRef(function WidgetGridItemComponent(
 	{ children, title, className, style, onRemoveItem, ...rest }: WidgetProps,
-	ref: Ref<HTMLDivElement>
+	ref: any
 ) {
+	// useEffect(() => {
+	// 	const chartNode = ref.current;
+	// 	const width = chartNode.offsetWidth;
+	// 	const height = chartNode.offsetHeight;
+
+	// 	console.log("width", width);
+	// 	console.log("height", height);
+
+	// 	console.log(ref.current);
+	// }, []);
+
 	return (
 		<div
 			className={`bg-[--widget-background-color] outline outline-1 outline-[--widget-border-color] hover:outline-dashed hover:outline-2
-				widget-number ${className}
+				widget-number flex flex-col ${className}
 			`}
 			style={style}
 			ref={ref}
@@ -35,9 +46,7 @@ const Widget = forwardRef(function WidgetGridItemComponent(
 				</OptionsDropdown>
 			</header>
 
-			<div className="min-h-[15rem] mx-h-[15rem] overflow-auto p-2 pt-0 text-[--widget-content-color]">
-				<div className="cursor-pointer p-2 hover:bg-ray-100">{children}</div>
-			</div>
+			<div className="text-[--widget-content-color] flex flex-col flex-1 h-full">{children}</div>
 		</div>
 	);
 });

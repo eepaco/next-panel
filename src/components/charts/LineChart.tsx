@@ -19,7 +19,7 @@ interface LineChartProps {
 function LineChart(props: LineChartProps) {
 	const options = {
 		maintainAspectRatio: false,
-		responsive: true,
+		// responsive: true,
 		plugins: {
 			title: {
 				display: false,
@@ -62,14 +62,12 @@ function LineChart(props: LineChartProps) {
 	};
 
 	return (
-		<>
-			<div className="flex h-[200px]">
+		<div className="w-full">
+			<div className="flex h-[83%]">
 				<Line
 					data={{
 						...props.data,
 					}}
-					// width={"100%"}
-					// height={200}
 					options={{ ...options, ...props.options }}
 				/>
 			</div>
@@ -82,7 +80,7 @@ function LineChart(props: LineChartProps) {
 					</span>
 				</div>
 			)}
-		</>
+		</div>
 	);
 }
 
