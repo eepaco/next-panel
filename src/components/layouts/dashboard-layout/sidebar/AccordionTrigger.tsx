@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactNode, Ref } from "react";
 import { mdiChevronRight } from "@mdi/js";
 import Icon from "@mdi/react";
 import * as Accordion from "@radix-ui/react-accordion";
@@ -12,14 +12,14 @@ const AccordionTrigger = React.forwardRef(function AccordionTriggerComponent(
 		showTitle,
 		...props
 	}: {
-		className?: any;
-		children?: any;
-		icon?: any;
+		className?: string;
+		children?: ReactNode;
+		icon?: string;
 		isRoot?: boolean;
 		showTitle: boolean;
 		props?: any;
 	},
-	forwardedRef: any
+	forwardedRef: Ref<HTMLButtonElement>
 ) {
 	return (
 		<Accordion.Header className="flex w-full">

@@ -20,10 +20,6 @@ export default function ClientApp(props: { children: ReactNode }) {
 		if (styleElement) return;
 
 		const tailwindColors: CssTailwindGlobalHexColors = themes.light;
-		// {
-		// 	"primary-color": "#499258",
-		// 	"secondary-color": "#323232",
-		// };
 
 		styleElement = document.createElement("style");
 		styleElement.id = "global-variables";

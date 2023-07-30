@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import Widget from "./Widget";
-import WidgetContainer from "./WidgetContainer";
+import WidgetContainer from "../draggable-and-resizable/GridLayout";
 import { Layout } from "react-grid-layout";
 
 const meta: Meta<typeof WidgetContainer> = {
