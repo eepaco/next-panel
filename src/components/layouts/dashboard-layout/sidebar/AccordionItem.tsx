@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import * as Accordion from "@radix-ui/react-accordion";
 
 const AccordionItem = React.forwardRef(function AccordionItemComponent(
@@ -9,10 +9,10 @@ const AccordionItem = React.forwardRef(function AccordionItemComponent(
 		showTitle,
 		...props
 	}: {
-		className?: any;
-		children?: any;
+		className?: string;
+		children?: ReactNode;
 		value: string;
-		showTitle?: any;
+		showTitle?: boolean;
 		props?: any;
 	},
 	forwardedRef: any

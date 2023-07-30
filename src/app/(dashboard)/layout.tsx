@@ -1,8 +1,8 @@
 "use client";
 
 import React, { ReactElement, useRef } from "react";
-import Navbar from "@/components/Layouts/DashboardLayout/Navbar/Navbar";
-import Sidebar from "@/components/Layouts/DashboardLayout/Sidebar/Sidebar";
+import Navbar from "@/components/layouts/dashboard-layout/navbar/Navbar";
+import Sidebar from "@/components/layouts/dashboard-layout/sidebar/Sidebar";
 import useHandleResizeTransition from "@/hooks/useHandleResizeTransition";
 import { useAppSelector } from "@/hooks/useRedux";
 

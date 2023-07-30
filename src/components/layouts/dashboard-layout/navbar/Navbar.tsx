@@ -47,7 +47,7 @@ const Navbar = () => {
 
 	return (
 		<NavigationMenu.Root
-			className={`w-full fixed end-0 top-[0] z-[1] ease-in ${
+			className={`w-full fixed end-0 top-[0] z-[10] ease-in ${
 				isSidebarOpen ? "md:w-[calc(100%-16.0rem)]" : "md:w-[calc(100%-3.0rem)]"
 			}`}
 			ref={headerRef}

@@ -33,13 +33,11 @@ const options = {
 function DoughnutChart(props: DoughnutChartProps) {
 	return (
 		<>
-			<div className="flex h-[200px]">
+			<div className="flex w-full h-[97%]">
 				<Doughnut
 					data={{
 						...props.data,
 					}}
-					// width={"100%"}
-					// height={200}
 					options={{ ...options, ...props.options }}
 				/>
 			</div>
