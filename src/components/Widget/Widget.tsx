@@ -1,6 +1,6 @@
 import Icon from "@mdi/react";
 import { mdiDotsVertical, mdiMenuDown } from "@mdi/js";
-import { CSSProperties, forwardRef, ReactNode, Ref, RefObject, useEffect } from "react";
+import { CSSProperties, forwardRef, ReactNode } from "react";
 import OptionsDropdown from "./OptionsDropdown";
 
 type WidgetProps = {
@@ -15,17 +15,6 @@ const Widget = forwardRef(function WidgetGridItemComponent(
 	{ children, title, className, style, onRemoveItem, ...rest }: WidgetProps,
 	ref: any
 ) {
-	// useEffect(() => {
-	// 	const chartNode = ref.current;
-	// 	const width = chartNode.offsetWidth;
-	// 	const height = chartNode.offsetHeight;
-
-	// 	console.log("width", width);
-	// 	console.log("height", height);
-
-	// 	console.log(ref.current);
-	// }, []);
-
 	return (
 		<div
 			className={`bg-[--widget-background-color] outline outline-1 outline-[--widget-border-color] hover:outline-dashed hover:outline-2
