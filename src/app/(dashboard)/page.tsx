@@ -60,14 +60,12 @@ export default function Home() {
 		setLayouts({ lg: _.reject(layouts.lg, { i: i }) });
 	};
 
-	const fuck = useRef<any>(null);
-
 	return (
 		<>
 			<Toast />
 
 			<GridLayout layouts={layouts}>
-				<WidgetContainer title="Line Chart" key={"Item 1"} ref={fuck}>
+				<WidgetContainer title="Line Chart" color="warning" key={"Item 1"}>
 					<LineChart
 						data={{
 							labels: [
@@ -125,8 +123,13 @@ export default function Home() {
 					/>
 				</WidgetContainer>
 
-				{layouts.lg.slice(2).map((layoutItem: Layout) => (
-					<WidgetContainer title={layoutItem.i} key={layoutItem.i} onRemoveItem={onRemoveItem}>
+				{layouts.lg.slice(2).map((layoutItem: Layout, i: number) => (
+					<WidgetContainer
+						title={layoutItem.i}
+						key={layoutItem.i}
+						onRemoveItem={onRemoveItem}
+						color={i % 3 === 0 ? "info" : i % 3 === 1 ? "success" : "danger"}
+					>
 						{isLoading && <p>Loading some pokemon cards for test...</p>}
 						<p>hello there</p>
 					</WidgetContainer>
