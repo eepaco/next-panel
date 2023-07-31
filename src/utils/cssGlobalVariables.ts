@@ -44,6 +44,7 @@ type CssSidebarGlobalHexColors = {
 type CssWidgetGlobalHexColors = {
 	"widget-background-color": string;
 	"widget-border-color": string;
+	"widget-heading-background-color": string;
 	"widget-heading-color": string;
 	"widget-content-color": string;
 	"widget-dropdown_menu_button-color": string;
@@ -53,12 +54,43 @@ type CssWidgetGlobalHexColors = {
 	"widget-dropdown_menu-text-hover-color": string;
 	"widget-dropdown_menu-background-active-color": string;
 	"widget-dropdown_menu-text-active-color": string;
+
+	"widget-warning-background-color": string;
+	"widget-warning-border-color": string;
+	"widget-heading-warning-background-color": string;
+	"widget-heading-warning-color": string;
+	"widget-dropdown_menu_button-warning-color": string;
+
+	"widget-danger-background-color": string;
+	"widget-danger-border-color": string;
+	"widget-heading-danger-background-color": string;
+	"widget-heading-danger-color": string;
+	"widget-dropdown_menu_button-danger-color": string;
+
+	"widget-success-background-color": string;
+	"widget-success-border-color": string;
+	"widget-heading-success-background-color": string;
+	"widget-heading-success-color": string;
+	"widget-dropdown_menu_button-success-color": string;
+
+	"widget-info-background-color": string;
+	"widget-info-border-color": string;
+	"widget-heading-info-background-color": string;
+	"widget-heading-info-color": string;
+	"widget-dropdown_menu_button-info-color": string;
 };
 
 type CssChartGlobalHexColors = {
 	"linechart-stat_title-text-color": string;
 	"linechart-stat_value-text-color": string;
 	"chart-label-text-color": string;
+};
+
+type CssSemanticHexColors = {
+	"warning-color": string;
+	"success-color": string;
+	"danger-color": string;
+	"info-color": string;
 };
 
 type CssAlertGlobalHexColors = {
@@ -106,13 +138,15 @@ export function getComputedCssGlobalColors(
 				CssNavbarGlobalHexColors &
 				CssSidebarGlobalHexColors &
 				CssWidgetGlobalHexColors &
-				CssChartGlobalHexColors
+				CssChartGlobalHexColors &
+				CssSemanticHexColors
 		>
 ): CssBodyGlobalHexColors &
 	CssNavbarGlobalHexColors &
 	CssSidebarGlobalHexColors &
 	CssWidgetGlobalHexColors &
-	CssChartGlobalHexColors {
+	CssChartGlobalHexColors &
+	CssSemanticHexColors {
 	const primaryColor = variables["primary-color"];
 	const secondaryColor = variables["secondary-color"];
 
@@ -121,6 +155,11 @@ export function getComputedCssGlobalColors(
 			variables["body-background-color"] ?? adjustColorBrightness(secondaryColor, -6),
 		"navbar-background-color": variables["navbar-background-color"] ?? primaryColor,
 		"sidebar-background-color": variables["sidebar-background-color"] ?? secondaryColor,
+		"chart-label-text-color": variables["chart-label-text-color"] ?? "#8c8c8c",
+		"warning-color": variables["warning-color"] ?? "#e28722",
+		"danger-color": variables["danger-color"] ?? "#e74c3c",
+		"success-color": variables["success-color"] ?? "#07bc0c",
+		"info-color": variables["info-color"] ?? "#3498db",
 	}).merge((obj) => ({
 		"navbar-item-text-color":
 			variables["navbar-item-text-color"] ?? getContrastColor(obj["navbar-background-color"]),
@@ -187,6 +226,9 @@ export function getComputedCssGlobalColors(
 			variables["widget-background-color"] ??
 			adjustColorBrightness(obj["body-background-color"], 10),
 		"widget-border-color": variables["widget-border-color"] ?? "#b3b3b3",
+		"widget-heading-background-color":
+			variables["widget-heading-background-color"] ??
+			adjustColorBrightness(obj["body-background-color"], 10),
 		"widget-heading-color":
 			variables["widget-heading-color"] ?? getContrastColor(obj["body-background-color"]),
 		"widget-content-color": variables["widget-content-color"] ?? "#8c8c8c",
@@ -211,11 +253,54 @@ export function getComputedCssGlobalColors(
 		"widget-dropdown_menu-text-active-color":
 			variables["widget-dropdown_menu-text-active-color"] ??
 			(getContrastColor(obj["body-background-color"]) === "#ffffff" ? "#000000" : "#ffffff"),
+		"widget-warning-background-color":
+			variables["widget-warning-background-color"] ??
+			(getBrightness(primaryColor) > 125
+				? adjustColorBrightness(obj["warning-color"], 600)
+				: adjustColorBrightness(obj["warning-color"], -87)),
+		"widget-warning-border-color": variables["widget-warning-border-color"] ?? obj["warning-color"],
+		"widget-heading-warning-background-color":
+			variables["widget-heading-warning-background-color"] ?? obj["warning-color"],
+		"widget-heading-warning-color": variables["widget-heading-warning-color"] ?? "#ffffff",
+		"widget-dropdown_menu_button-warning-color":
+			variables["widget-dropdown_menu_button-warning-color"] ?? "#ffffff",
+		"widget-danger-background-color":
+			variables["widget-danger-background-color"] ??
+			(getBrightness(primaryColor) > 125
+				? "#f5eced"
+				: adjustColorBrightness(obj["danger-color"], -87)),
+		"widget-danger-border-color": variables["widget-danger-border-color"] ?? obj["danger-color"],
+		"widget-heading-danger-background-color":
+			variables["widget-heading-danger-background-color"] ?? obj["danger-color"],
+		"widget-heading-danger-color": variables["widget-heading-danger-color"] ?? "#ffffff",
+		"widget-dropdown_menu_button-danger-color":
+			variables["widget-dropdown_menu_button-danger-color"] ?? "#ffffff",
+		"widget-success-background-color":
+			variables["widget-success-background-color"] ??
+			(getBrightness(primaryColor) > 125
+				? adjustColorBrightness(obj["success-color"], 3350)
+				: adjustColorBrightness(obj["success-color"], -87)),
+		"widget-success-border-color": variables["widget-success-border-color"] ?? obj["success-color"],
+		"widget-heading-success-background-color":
+			variables["widget-heading-success-background-color"] ?? obj["success-color"],
+		"widget-heading-success-color": variables["widget-heading-success-color"] ?? "#ffffff",
+		"widget-dropdown_menu_button-success-color":
+			variables["widget-dropdown_menu_button-success-color"] ?? "#ffffff",
+		"widget-info-background-color":
+			variables["widget-info-background-color"] ??
+			(getBrightness(primaryColor) > 125
+				? "#f2faff"
+				: adjustColorBrightness(obj["info-color"], -87)),
+		"widget-info-border-color": variables["widget-info-border-color"] ?? obj["info-color"],
+		"widget-heading-info-background-color":
+			variables["widget-heading-info-background-color"] ?? obj["info-color"],
+		"widget-heading-info-color": variables["widget-heading-info-color"] ?? "#ffffff",
+		"widget-dropdown_menu_button-info-color":
+			variables["widget-dropdown_menu_button-info-color"] ?? "#ffffff",
 		"linechart-stat_title-text-color": variables["linechart-stat_title-text-color"] ?? "#aaaaaa",
 		"linechart-stat_value-text-color":
 			variables["linechart-stat_value-text-color"] ??
 			getContrastColor(obj["body-background-color"]),
-		"chart-label-text-color": variables["chart-label-text-color"] ?? "#8c8c8c",
 	})).value;
 }
 
@@ -225,7 +310,8 @@ export function mapPropetiesToCss(
 		CssNavbarGlobalHexColors &
 		CssSidebarGlobalHexColors &
 		CssWidgetGlobalHexColors &
-		CssChartGlobalHexColors
+		CssChartGlobalHexColors &
+		CssSemanticHexColors
 ) {
 	const result = [];
 	result.push(

@@ -2,7 +2,7 @@ import store from "../redux/configureStore";
 import { uiConfigSlice } from "../redux/UIConfig/UIConfigSlice";
 import { getComputedCssGlobalColors, mapPropetiesToCss } from "./cssGlobalVariables";
 
-type Themes = "light" | "dark" | "blue";
+type Themes = "light" | "dark" | "blue" | "pink";
 
 export const changeTheme = (theme: Themes) => {
 	store.dispatch(uiConfigSlice.actions.setTheme(theme));
@@ -28,6 +28,10 @@ export const themes = {
 		"navbar-dropdown_menu_item-background-hover-color": "#e6e6e6",
 		"navbar-dropdown_menu_item-text-color": "#000000",
 		"navbar-dropdown_menu-border-color": "#000000",
+		"widget-warning-background-color": "#ffffee",
+		"widget-danger-background-color": "#f5eced",
+		"widget-success-background-color": "#f2ffff",
+		"widget-info-background-color": "#f2faff",
 	},
 	dark: {
 		"primary-color": "#1f1f1f",
@@ -37,7 +41,6 @@ export const themes = {
 		"sidebar-item-background-active-color": "#484848",
 		"sidebar-trigger_text-active-color": "#f7f7f7",
 		"sidebar-trigger_icon-active-color": "#f7f7f7",
-		// "sidebar-content-background-active-color": "#404040",
 	},
 	blue: {
 		"primary-color": "#2b76b9",
@@ -46,5 +49,13 @@ export const themes = {
 		"navbar-dropdown_menu_item-background-hover-color": "#e6e6e6",
 		"navbar-dropdown_menu_item-text-color": "#000000",
 		"navbar-dropdown_menu-border-color": "#000000",
+		"widget-warning-background-color": "#ffffee",
+		"widget-danger-background-color": "#f5eced",
+		"widget-success-background-color": "#f2ffff",
+		"widget-info-background-color": "#f2faff",
+	},
+	pink: {
+		"primary-color": "#ff99cc",
+		"secondary-color": "#ffffff",
 	},
 };

@@ -102,6 +102,9 @@ const Navbar = () => {
 							<NavbarDropdownItem onClick={() => changeTheme("blue")}>
 								<div className="flex items-center justify-center">Blue</div>
 							</NavbarDropdownItem>
+							<NavbarDropdownItem onClick={() => changeTheme("pink")}>
+								<div className="flex items-center justify-center">Pink</div>
+							</NavbarDropdownItem>
 						</NavbarDropdownContent>
 					</NavigationMenu.Item>
 
