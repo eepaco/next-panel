@@ -1,19 +1,34 @@
 import Icon from "@mdi/react";
 import { mdiDotsVertical, mdiMenuDown } from "@mdi/js";
-import { CSSProperties, forwardRef, ReactNode } from "react";
+import { ComponentPropsWithRef, CSSProperties, forwardRef, ReactNode } from "react";
 import OptionsDropdown from "./OptionsDropdown";
+import { SemanticColors } from "@/types";
 
-type WidgetProps = {
+export type WidgetProps = {
 	children: ReactNode;
 	title: string;
 	className?: string;
 	style?: CSSProperties;
 	onRemoveItem?: any;
-	color?: "info" | "success" | "danger" | "warning";
+	color?: SemanticColors;
+	footer?: ReactNode;
+	headerStart?: ReactNode;
+	headerEnd?: ReactNode;
 };
 
 const Widget = forwardRef(function WidgetGridItemComponent(
-	{ children, title, className, style, onRemoveItem, color, ...rest }: WidgetProps,
+	{
+		children,
+		title,
+		className,
+		style,
+		onRemoveItem,
+		color,
+		footer,
+		headerStart,
+		headerEnd,
+		...rest
+	}: WidgetProps,
 	ref: any
 ) {
 	return (
@@ -41,42 +56,52 @@ const Widget = forwardRef(function WidgetGridItemComponent(
 		>
 			<header
 				className={`bg-[--widget-heading-background-color] flex items-center justify-between 
-					cursor-move mb-2 p-1 pb-0 grid-item__title
+					cursor-move mb-2 p-1 grid-item__title
 					${color === "warning" && "bg-[--widget-heading-warning-background-color]"}
 					${color === "danger" && "bg-[--widget-heading-danger-background-color]"}
 					${color === "success" && "bg-[--widget-heading-success-background-color]"}
 					${color === "info" && "bg-[--widget-heading-info-background-color]"}
 				`}
 			>
-				<h3
-					className={`
+				<div className="flex items-center gap-1">
+					<h3
+						className={`
 						text-[--widget-heading-color] text-lg
 						${color === "warning" && "text-[--widget-heading-warning-color]"}
 						${color === "danger" && "text-[--widget-heading-danger-color]"}
 						${color === "success" && "text-[--widget-heading-success-color]"}
 						${color === "info" && "text-[--widget-heading-info-color]"}
 					`}
-				>
-					{title}
-				</h3>
+					>
+						{title}
+					</h3>
 
-				<OptionsDropdown onRemove={() => onRemoveItem(title)}>
-					<button
-						className={`
+					{headerStart && headerStart}
+				</div>
+
+				<div className="flex items-center gap-1">
+					{headerEnd && headerEnd}
+
+					<OptionsDropdown onRemove={() => onRemoveItem(title)}>
+						<button
+							className={`
 							flex items-center text-[--widget-dropdown_menu_button-color] -space-x-2 cursor-pointer
 							${color === "warning" && "text-[--widget-dropdown_menu_button-warning-color]"}
 							${color === "danger" && "text-[--widget-dropdown_menu_button-danger-color]"}
 							${color === "success" && "text-[--widget-dropdown_menu_button-success-color]"}
 							${color === "info" && "text-[--widget-dropdown_menu_button-info-color]"}
 						`}
-					>
-						<Icon path={mdiDotsVertical} size={0.8} />
-						<Icon path={mdiMenuDown} size={0.8} />
-					</button>
-				</OptionsDropdown>
+						>
+							<Icon path={mdiDotsVertical} size={0.8} />
+							<Icon path={mdiMenuDown} size={0.8} />
+						</button>
+					</OptionsDropdown>
+				</div>
 			</header>
 
 			<div className="text-[--widget-content-color] flex flex-1 h-full">{children}</div>
+
+			{footer && footer}
 		</div>
 	);
 });

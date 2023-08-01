@@ -5,11 +5,13 @@ import LineChart from "@/components/charts/LineChart";
 import WidgetContainer from "@/components/widget/WidgetContainer";
 import GridLayout from "@/components/draggable-and-resizable/GridLayout";
 import _ from "lodash";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { Layout } from "react-grid-layout";
 import Toast from "@/components/toast/Toast";
 import useSWR from "swr";
 import { Api } from "@/api/Api";
+import { mdiInformation } from "@mdi/js";
+import Icon from "@mdi/react";
 
 const initialLayouts = {
 	lg: [
@@ -98,7 +100,27 @@ export default function Home() {
 					/>
 				</WidgetContainer>
 
-				<WidgetContainer title="Doughnut Chart" key={"Item 2"}>
+				<WidgetContainer
+					title="Doughnut Chart"
+					key={"Item 2"}
+					footer={<div className="bg-blue-400 p-2 text-white">This is footer</div>}
+					headerStart={
+						<Icon
+							path={mdiInformation}
+							size={0.7}
+							title="This is for Header Start"
+							className="text-blue-500 cursor-pointer"
+						/>
+					}
+					headerEnd={
+						<button
+							className="text-xs bg-red-500 text-white px-2 py-[0.1rem] rounded-md"
+							onClick={() => alert("YOU clicked on HeaderEnd button")}
+						>
+							Click me
+						</button>
+					}
+				>
 					<DoughnutChart
 						data={{
 							labels: ["Label 1", "Label 2", "Label 3", "Label 4"],
