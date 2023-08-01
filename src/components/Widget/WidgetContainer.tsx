@@ -1,12 +1,13 @@
 import { forwardRef } from "react";
 import Widget from "./Widget";
+import { WidgetProps } from "./Widget";
 
 const WidgetContainer = forwardRef(function WidgetComponent(
-	{ title, children, ...props }: any,
+	{ children, ...props }: WidgetProps,
 	ref: any
 ) {
 	return (
-		<Widget title={title} {...props} ref={ref}>
+		<Widget {...props} ref={ref}>
 			{children}
 		</Widget>
 	);
