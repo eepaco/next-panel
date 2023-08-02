@@ -2,7 +2,7 @@
 
 import { ReactNode, useEffect, useInsertionEffect, useState } from "react";
 import { DirectionProvider } from "@radix-ui/react-direction";
-import { useAppSelector } from "@/hooks/useRedux";
+import { useAppSelector } from "../hooks/useRedux";
 import { IntlProvider } from "react-intl";
 import {
 	CssTailwindGlobalHexColors,

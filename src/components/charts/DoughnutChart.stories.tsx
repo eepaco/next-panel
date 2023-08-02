@@ -74,6 +74,7 @@ const chartDataOptions = {
 const meta: Meta<typeof DoughnutChartComp> = {
 	title: "Charts/Doughnut Chart",
 	component: DoughnutChartComp,
+	decorators: [(story) => <div className="w-[23rem] p-2 bg-blue-100">{story()}</div>],
 	argTypes: {
 		data: {
 			options: Object.keys(chartDataOptions),

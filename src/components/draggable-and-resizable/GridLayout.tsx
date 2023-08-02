@@ -1,4 +1,4 @@
-import { useAppSelector } from "@/hooks/useRedux";
+import { useAppSelector } from "../../hooks/useRedux";
 import { ReactNode, useEffect } from "react";
 import { Layout, Layouts, Responsive, WidthProvider } from "react-grid-layout";
 

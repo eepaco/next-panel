@@ -1,6 +1,6 @@
 import React from "react";
 import { ToastContainer, ToastContainerProps } from "react-toastify";
-import { useAppSelector } from "@/hooks/useRedux";
+import { useAppSelector } from "../../hooks/useRedux";
 import "react-toastify/dist/ReactToastify.css";
 
 function Toast(props: ToastContainerProps) {
