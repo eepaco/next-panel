@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import WidgetComp from "./Widget";
 import OptionsDropdownComp from "./OptionsDropdown";
 
 const meta: Meta<typeof OptionsDropdownComp> = {
@@ -7,6 +6,18 @@ const meta: Meta<typeof OptionsDropdownComp> = {
 	component: OptionsDropdownComp,
 	parameters: {
 		layout: "centered",
+	},
+	argTypes: {
+		children: {
+			table: {
+				disable: true,
+			},
+		},
+		onRemove: {
+			table: {
+				disable: true,
+			},
+		},
 	},
 };
 export default meta;
